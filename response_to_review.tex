@@ -215,6 +215,9 @@ We have added statements to make this distinction clear to the reader.}
 
 \Comment{Page 12, subsec 3.5, last par -- From this paragraph I evince that Amesos2 is only an interface not a solver package. Is this correct? Please clarify.}
 
+\Response{Amesos2 implements one direct solver, KLU2, itself and provides interfaces to direct solvers in third-party libraries as well as in the Trilinos package ShyLU.
+We have clarified that in the description of the Amesos2 package.}
+
 \Comment{Page 12-13, subsec 3.6 -- The whole subsection is a bit unclear. I don’t have a clear idea of what Teko does. An example could perhaps clarify its scope.}
 
 \Comment{Page 13, subsec. 3.8 -- The description in this subsection sounds very nice indeed. I would very much like an example of the versatility of the interface. Also, why Anasazi is not included? Is the requirement of having a RHS such a constraint for the interface to exclude eigensolvers?}
