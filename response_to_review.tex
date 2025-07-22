@@ -91,7 +91,13 @@ There was no mention of compile times in the paper.
 \end{itemize}~%
 }
 
-\Response{\todo{Respond.}}
+\Response{
+  The compile times of Trilinos depend on the number of packages and backends enabled.
+  Excessive compile times can occur, but are often caused by the underlying software stack.
+  Trilinos tests every PR in its continuous integration, including CPU and CUDA builds.
+  The turnaround for building and testing Trilinos is generally on the order of one hour, but admittedly relies on \texttt{ccache}.
+  We will consider documenting best practices for achieving fast builds on the Trilinos web page or GitHub wiki.
+}
 
 \Comment{
 \begin{itemize}
@@ -102,7 +108,11 @@ There was no mention of compile times in the paper.
 \end{itemize}~%
 }
 
-\Response{\todo{Respond.}}
+\Response{
+  The Trilinos package provided by Anaconda is based on PyTrilinos which uses the old Epetra stack.
+  It will be archived in the fall and is therefore not mentioned in the paper.
+  There are currently no pip or anaconda packages for its successor PyTrilinos2, but we will consider providing them in the future.
+}
 
 %\Response{Respond to the reviewer's comment.
 %Explain why we did changes to the manuscript based on his/her comment.
