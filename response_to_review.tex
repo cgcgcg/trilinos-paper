@@ -218,6 +218,11 @@ The present manuscript introduces these new packages and their capabilities and 
 
 \Comment{Page 8, subsec 2.6, par 3 -- ``Zoltan2 ... (via Kokkos)''. Another source of confusion. I understood that what is described here is Tpetra’s goal}
 
+\todo{Matthias: I don't understand the problem. The manuscript is very clear here. Should we just remove the line break between the second and third paragraph to reduce the room for misinterpretation by moving the statements about parallelism closer to the description of Zoltan2's capabilities?}
+
+\Response{The first and second paragraph of subsection 2.6 clearly describe the purpose of Zoltan2: partitioning, load balancing, and other combinatorial algorithms.
+While Tpetra offers distributed linear algebra, it does not compute the layout of the distribution itself.}
+
 \noindent\textbf{Section 3}
 
 \Comment{Page 9, line 2 -- I am not familiar with the ``traits mechanism'' concept. I would encourage to be less terse.}
