@@ -16,8 +16,8 @@ Therefore it focuses on the major developments within Trilinos in the last decad
 It will give only an overview of the features, and we refer to the extensive list of references for the details of these features.
 We are also cognizant of the fact that this article describes software that is being actively developed and constantly evolving.
 Hence, we will focus on the high-level features and concepts that we expect to remain stable for several years.
-We also briefly touch upon the Trilinos community 
-%(Section~\ref{sec:community}) 
+We also briefly touch upon the Trilinos community
+%(Section~\ref{sec:community})
 and software engineering issues with respect to Trilinos.
 
 \subsection{Modern Trilinos:  Performance Portability through Kokkos}
@@ -31,7 +31,7 @@ To avoid the necessity of diverging code paths, Trilinos leverages the Kokkos ec
 Now, Trilinos provides snapshots of the two primary Kokkos subprojects (Core and Kernels) that reflect the latest release of Kokkos. Trilinos can also be built against version-compatible external installations of Kokkos --- a capability required for interoperability with other Kokkos-based libraries.
 
 Kokkos enables Trilinos developers to write single source implementations of their packages that perform well on all major HPC hardware architectures. Some of its design principles are also reflected in Trilinos API designs. In particular, the
-use of \texttt{execution} and \texttt{memory spaces} as parameters of data structures and algorithms is a common thread throughout Trilinos. This design characteristic enables Trilinos users to manage the heterogeneity of modern architectures and its impact on Trilinos data structures.
+use of \texttt{execution spaces} \revised{(where does code run)} and \texttt{memory spaces} \revised{(where does data reside)} as parameters of data structures and algorithms is a common thread throughout Trilinos. This design characteristic enables Trilinos users to manage the heterogeneity of modern architectures and its impact on Trilinos data structures.
 
 
 \subsection{Trilinos Functionality}
@@ -72,9 +72,9 @@ We briefly describe these product areas below.
 
 \paragraph{Linear Solvers and Preconditioners} The wide variety of applications that use Trilinos need a diverse set of linear solvers. Trilinos has support for both iterative and direct linear solvers, including interfaces to external solver packages. There are a number of preconditioner options from multithreaded or performance portable node-level preconditioners to scalable multilevel domain decomposition or multigrid preconditioners. The preconditioners and solvers use the data abstractions from the core packages. Section \ref{sec:lin_solve} provides a detailed description of these features.
 
-\paragraph{Nonlinear Solvers and Analysis Tools} These packages provide high-level algorithms for computational simulations and design. Capabilities include solvers for nonlinear equations, parameter continuation, bifurcation tracking, optimization, and uncertainty quantification. Trilinos also provides lower-level utility packages to evaluate quantities of interest required by the analysis algorithms. Capabilities include automatic differentiation technology to evaluate derivatives and embedded ensemble propagation for uncertainty quantification. These packages and their capabilities will be discussed further in Section~\ref{sec:nonlin_solve}.
+\paragraph{Nonlinear Solvers and Analysis Tools} These packages provide algorithms for computational simulations and design. Capabilities include solvers for nonlinear equations, parameter continuation, bifurcation tracking, optimization, and uncertainty quantification. Trilinos also provides lower-level utility packages to evaluate quantities of interest required by the analysis algorithms. Capabilities include automatic differentiation technology to evaluate derivatives and embedded ensemble propagation for uncertainty quantification. These packages and their capabilities will be discussed further in Section~\ref{sec:nonlin_solve}.
 
-\paragraph{Discretization Tools} This collection of packages provides functionality for the discretization of differential equations. In particular, it supports mesh-free and mesh-based spatial discretizations, with a focus on high-order finite elements, and time integration. Discretization tools also include cross-cutting utilities for algorithmic differentiation and for managing directed acyclic graphs of evaluation kernels. These capabilities are described further in Section~\ref{sec:discretization} in detail.
+\paragraph{Discretization Tools} This collection of packages provides functionality for the discretization of differential equations. In particular, it supports mesh-free and mesh-based spatial discretizations, with a focus on high-order finite elements, and time integration. Discretization tools also include \revised{support} for algorithmic differentiation and for managing directed acyclic graphs of evaluation kernels. These capabilities are described further in Section~\ref{sec:discretization} in detail.
 
 \paragraph{Framework} The Framework product is different than the other Trilinos products in that most of the resources and services are not associated with Trilinos packages. The Framework product area is primarily focused on activities such as developing and maintaining infrastructure for automated testing and documentation, as well as associated workflows. A small number of infrastructure and cross-cutting packages are also associated with the Framework, for example the Python wrapper package PyTrilinos2. Section~\ref{sec:framework} provides further details.
 

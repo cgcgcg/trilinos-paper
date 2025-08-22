@@ -13,7 +13,7 @@ Trilinos offers many linear solver capabilities: dense and sparse direct solvers
 
 Belos~\cite{Bavier2012a} provides next-generation iterative linear solvers and a powerful developer framework for solving linear systems and least-squares problems. This framework provides several abstractions that facilitate code reuse and extensibility.
 
-First, Belos decouples the algorithms from the implementation of the underlying linear algebra object using traits mechanisms.  While concrete linear algebra adapters are provided for Tpetra and Thyra, users can also implement their own interfaces to leverage any existing matrix and vector representations. Second, there are abstractions to orthogonalization to ease the integration of application or architecture-specific orthogonalization methods. Implementations of iterated classical Gram-Schmidt, DGKS-corrected (Daniel, Gragg, Kaufman, and Stewart-corrected) classical Gram-Schmidt, and iterated modified Gram-Schmidt algorithms are provided.  Finally, powerful solver managers encapsulate the strategy for solving a linear system or least-squares problem using abstract interfaces to iteration kernels.  As a result, the algorithms developed using Belos abstractions can be relatively agnostic to data layout in memory or distributed over processors and parallel matrix/vector operations.
+First, Belos decouples the algorithms from the implementation of the underlying linear algebra object using \revised{abstract traits classes. For example,} concrete linear algebra adapters are provided for Tpetra and Thyra. Users can also implement their own interfaces to leverage any existing matrix and vector representations. Second, there are abstractions to orthogonalization to ease the integration of application or architecture-specific orthogonalization methods. Implementations of iterated classical Gram-Schmidt, DGKS-corrected (Daniel, Gragg, Kaufman, and Stewart-corrected) classical Gram-Schmidt, and iterated modified Gram-Schmidt algorithms are provided.  Finally, solver managers encapsulate the strategy for solving a linear system or least-squares problem using abstract interfaces to iteration kernels.  As a result, the algorithms developed using Belos abstractions can be relatively agnostic to data layout in memory or distributed over processors and parallel matrix/vector operations.
 
 Belos supersedes the AztecOO package~\cite{Heroux2004a} providing solver managers for single-vector iterative solvers, but also extensions of these methods to block iterative methods for solving linear systems with multiple right-hand sides.  Single-vector solver managers include conjugate gradient (CG), minimum residual (MINRES), generalized minimal residual (GMRES), stabilized biconjugate gradient (BiCGStab), and transpose-free QMR (TFQMR) as well as ``seed'' solvers (hybrid GMRES, PCPG), subspace recycling solvers (GCRO-DR and RCG), and least-squares solvers (LSQR).  There are versions of CG, GMRES, and GCRO-DR that construct a block Krylov subspace to solve for one or more right-hand sides.  There are also ``pseudo-block'' versions of CG, GMRES, and TFQMR that apply the single-vector iteration simultaneously on multiple right-hand sides, where matrix and preconditioner applications are aggregated to achieve better performance. Any single-vector iteration can be used to solve multiple right-hand sides as well but, if a block or pseudo-block version is not used, the solver will sequentially solve the right-hand sides.
 
@@ -42,7 +42,7 @@ based on Chebyshev iterations. The aforementioned preconditioners are available 
 forms and can operate on CRS and BSR matrices. In the block case,
 line relaxation is also supported, while in the point case, techniques
 like Vanka relaxation \cite{Vanka1986} are possible.  Auxiliary-space
-smoothing for $H(curl)$ and $H(div)$ discretizations in the style of
+\revised{smoothing for Maxwell and Darcy type problems} in the style of
 Hiptmair \cite{Hiptmair1997} are also supported.
 Local kernels are either implemented in Ifpack2 itself
 but can also be called from Kokkos Kernels for performance\hyp{}portable shared-memory algorithmic variants of Gauss-Seidel and Jacobi iterations.
@@ -71,7 +71,7 @@ all the way to multigrid methods for coupled multiphysics systems.
 Besides its strong focus on aggregation-based algebraic multigrid (AMG) methods,
 MueLu comes with specialized capabilities for (semi-)structured grids to perform semi-coarsening along grid lines
 while forming the coarse operator via a Galerkin product (in contrast to classical geometric multigrid methods).
-MueLu is extensible and allows for the research and development of new multigrid preconditioning methods.
+\revised{MueLu is easily extensible which makes it a good framework for the research and development of new multigrid preconditioning methods, e.g. different types of strength-of-connection or drop schemes.}
 Its weak and strong scalability up to \num{131000} cores of a Cray XC40 and one million cores of a Blue Gene/Q system, even for vector-valued partial differential equations (PDEs) on unstructured meshes, have been shown in~\cite{Lin2017a,Thomas2019a}.
 
 MueLu provides several approaches to constructing and solving the multilevel problem:
@@ -152,6 +152,7 @@ ShyLU also implements a distributed-memory linear solver based on the Schur comp
 
 The Teko library~\cite{Cyr2016a} provides interfaces for operators and preconditioners that are constructed from large physics-based sub-blocks.
 The sub-blocks are Thyra operators which are themselves often implemented using Tpetra matrices.
+\revised{Many multi-physics problems are conveniently described as a block-structured matrix which allows easy access to the underlying matrices describing single physics or coupling between different types of physics.}
 Teko provides generic block preconditioning strategies such as $2\times2$ block-LU factorizations as well as block versions of Jacobi- and Gauss--Seidel-type methods for any number of blocks,
 as well as commonly used approximate inverse strategies for the Navier-Stokes equation
 such as SIMPLEC, LSC, and PCD preconditioners~\cite{CyrShadidEtAl2012_StabilizationScalableBlockPreconditioning}.
