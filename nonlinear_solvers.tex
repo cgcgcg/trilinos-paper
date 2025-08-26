@@ -14,8 +14,8 @@ Additionally, it provides lower- and higher-order models including Broyden, Ande
 The algorithms have been designed for large-scale parallel inexact linear solvers using Krylov methods and support Jacobian-free Newton-Krylov variants.
 The library interacts with application codes through the Thyra model evaluator interface.
 NOX provides linear algebra abstractions for applications to use custom implementations with the algorithms.
-All algorithms are implemented under base-class abstractions for the solver, direction, and line search objects.
-Users can provide derived implementations for each of these base classes to insert new algorithms into the library.
+\revised{All algorithms are implemented under base-class abstractions for the solver, direction, and line search objects.
+Users can provide derived implementations for each of these base classes to insert new algorithms into the library.}
 NOX provides various stopping criteria, including absolute, relative, and weighted root mean square norms, as well as stagnation and NaN detection.
 Applications can build custom stopping criteria within a tree-based logical structure and provide additional criteria through the StatusTest abstraction.
 NOX also provides capabilities for continuation and stability analysis through the subpackage LOCA.
@@ -162,4 +162,3 @@ In particular, Piro implements main driver classes for:
 \item \emph{Parameter continuation and bifurcation analysis:} this capability is provided through the package LOCA.
 \end{itemize}
 These driver classes share a similar interface based on the \code{Thyra::ModelEvaluator} and the \code{Teuchos::ParameterList} classes. Applications define the problems to be targeted (e.g., the equations to be solved, the parameters, the quantities of interests) by providing a concrete implementations of the \code{Thyra::ModelEvaluator}; see \cite{pawlowski2012automating,pawlowski2012automatingpart2}.
-
