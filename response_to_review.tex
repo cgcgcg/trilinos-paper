@@ -361,7 +361,7 @@ We have clarified that in the description of the Amesos2 package.}
 
 \Comment{Page 17, subsec 4.5, 1st bullet point -- Clarify what LOCA does and what Piro does. As it is I find it quite confusing. As a general comment, I also do not understand why interfaces and solvers have to be packed in separate packages. It increases the confusion.}
 
-\Response{We have added the following text to clarify the roles of LOCA and Piro: "The core capabilities for continuation and bifurcation analysis are provided through the package LOCA. The Piro driver integrates these functionalities with linear, nonlinear, and time integration solvers, enhancing flexibility and usability". 
+\Response{We have added the following text to clarify the roles of LOCA and Piro: "The core capabilities for continuation and bifurcation analysis are provided through the package LOCA. The Piro driver integrates these functionalities with linear, nonlinear, and time integration solvers, enhancing flexibility and usability".
 Piro integrates several packages and solvers into a single interface, which cannot be confined to individual packages. However, each package maintains its own interfaces.}
 
 \noindent\textbf{References}
@@ -409,6 +409,8 @@ FROSch, ROL), showing performance on various architectures, scaling trends, and
 comparing to earlier versions of Trilinos would enrich the manuscript
 significantly.}
 
+\Response{See next response.}
+
 \Comment{Details on versioning, release engineering (TriBITS), and continuous integration
 are well-covered, but could be expanded providing a table of build/test matrix
 configurations, showing supported platforms (e.g., CUDA, ROCm, SYCL). Clarify
@@ -419,6 +421,13 @@ Trilinos.}
 strengthen its utility, strong and weak scaling plots of FROSch, MueLu, and ROL
 on at least two architectures (e.g., AMD+ROCm vs. NVIDIA+CUDA), to validate
 performance portability claims.}
+
+\Response{We agree that a discussion of performance results could make the manuscript more interesting.
+  However, we do not think that this is feasible as it would significantly increase the scope.
+  A lot more algorithmic detail would be required in order to provide a reasonable explanation of what platforms and scaling experiments are being run.
+  Moreover, selecting a subset of problems and packages to illustrate a representative snapshot of ``performance of Trilinos'' seems extremely daunting given the breadth of algorithms.
+  The current manuscript is already well beyond the usual page limit of the journal.
+}
 
 \Comment{The manuscript is a high-quality overview of a critical scientific
 infrastructure. With the addition of quantitative benchmarks and minor editorial
