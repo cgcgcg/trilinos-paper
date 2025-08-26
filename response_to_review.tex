@@ -353,15 +353,16 @@ We have clarified that in the description of the Amesos2 package.}
 
 \Comment{Page 16, subsec 4.5, par 1 -- ``performing parameter continuation'' Isn’t this carried out by the LOCA package? I am confused. Is this another abstraction interface?}
 
-\Response{\todo{respond}}
+\Response{Yes, Piro provides a unified interface and utilizes LOCA for parameter continuation, as explained in the third bullet of section 4.5. We have revised the section to clarify this point.}
 
 \Comment{Page 16, subsec 4.5, 1st bullet point -- The text here sounds way too high-level and vague. It reads to me as there is very little practical information.}
 
-\Response{\todo{respond}}
+\Response{We have revised the text to include more specific information. However, we prefer not to dedicate excessive space to the description of the Piro package.}
 
 \Comment{Page 17, subsec 4.5, 1st bullet point -- Clarify what LOCA does and what Piro does. As it is I find it quite confusing. As a general comment, I also do not understand why interfaces and solvers have to be packed in separate packages. It increases the confusion.}
 
-\Response{\todo{respond}}
+\Response{We have added the following text to clarify the roles of LOCA and Piro: "The core capabilities for continuation and bifurcation analysis are provided through the package LOCA. The Piro driver integrates these functionalities with linear, nonlinear, and time integration solvers, enhancing flexibility and usability". 
+Piro integrates several packages and solvers into a single interface, which cannot be confined to individual packages. However, each package maintains its own interfaces.}
 
 \noindent\textbf{References}
 
