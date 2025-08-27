@@ -345,11 +345,19 @@ We have clarified that in the description of the Amesos2 package.}
 
 \Comment{Page 16, subsec 4.4, par 2 -- ``... to be outer-spatial and inner stochastic'' I have no idea what this sentence mean. This is a bit too cryptic.}
 
-\Response{\todo{respond}}
+\Response{We revised this paragraph and included the following sentences to better clarify what is meant by outer-spatial and inner-stochastic:}
+
+\Changes{In particular, stochastic Galerkin methods applied to PDEs employ a tensor product discretization between the spatial and stochastic discretizations that generates a two-level sparsity pattern in the resulting stochastic Galerkin operator.  This operator is traditionally organized in a block fashion where the outer sparsity pattern is dictated by the stochastic discretization while each block follows the sparsity pattern of the PDE spatial discretization.  To improve performance on architectures such as GPUs, Stokhos commutes this layout to obtain an outer sparsity pattern dictated by the spatial discretization where each block follows the stochastic discretization and leverages Kokkos hierarchical parallelism to implement calculations corresponding to the stochastic discretization in a scalable and efficient manner.}
 
 \Comment{Page 16, subsec 4.4, par 3 -- ``.. Tpetra solver stack as a template...'' What does this mean? Also at the end of the paragraph ``union of the information'' What information? Totally unclear.}
 
-\Response{\todo{respond}}
+\Response{We revised this paragraph to better explain how Stokhos interacts with Tpetra through its scalar type template parameter by adding:}
+
+\Changes{This type can then be used within the Tpetra solver stack as an argument for its scalar type template parameter, allowing instantiation of Tpetra data structures on the ensemble type to propagate ensembles through supported linear solvers and preconditioners.}
+
+\Response{as well as be more explicit on what is meant by ``information'' by revising the sentence as:}
+
+\Changes{for example, GMRES for ensemble types needs to monitor the convergence of the individual samples in order to decide when to terminate based on whether every sample within the ensemble has satisfied the chosen stopping criteria.}
 
 \Comment{Page 16, subsec 4.5, par 1 -- ``performing parameter continuation'' Isn’t this carried out by the LOCA package? I am confused. Is this another abstraction interface?}
 
