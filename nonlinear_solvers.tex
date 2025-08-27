@@ -136,16 +136,17 @@ the intrusive stochastic Galerkin uncertainty quantification method~\cite{ghanem
 
 Stokhos' implementation of the intrusive stochastic Galerkin uncertainty quantification method allows stochastic projections to be computed, such as polynomial chaos and generalized polynomial chaos expansions.
 The implementation includes interfaces for forming the linear and/or nonlinear systems that follow from the stochastic Galerkin projection, as well as linear solver methods that can exploit the block structure of these systems.
-GPU performance is targeted by using Kokkos and by commuting the layout of the Galerkin operator to be outer-spatial and inner-stochastic~\cite{phipps2014exploring}.
+\revised{In particular, stochastic Galerkin methods applied to PDEs employ a tensor product discretization between the spatial and stochastic discretizations that generates a two-level sparsity pattern in the resulting stochastic Galerkin operator.  This operator is traditionally organized in a block fashion where the outer sparsity pattern is dictated by the stochastic discretization while each block follows the sparsity pattern of the PDE spatial discretization.  To improve performance on architectures such as GPUs, Stokhos commutes this layout to obtain an outer sparsity pattern dictated by the spatial discretization where each block follows the stochastic discretization and leverages Kokkos hierarchical parallelism to implement calculations corresponding to the stochastic discretization in a scalable and efficient manner~\cite{phipps2014exploring}.}
+%GPU performance is targeted by using Kokkos and by commuting the layout of the Galerkin operator to be outer-spatial and inner-stochastic~\cite{phipps2014exploring}.
 The implementation has been used in~\cite{constantine2014efficient} to efficiently propagate uncertainty in multiphysics systems by reducing the full system with a nonlinear elimination method.
 
 The embedded ensemble propagation consists of propagating a subset of samples gathered into a so-called ensemble through the forward simulation at once.
 It builds on~\cite{pawlowski2012automating} for automating embedded analysis capabilities. Stokhos defines an ensemble type: a SIMD data type that is able to store
-the values of input, output, and state variables for every sample of an ensemble. This type can then be used within the Tpetra solver stack as a template argument for the scalar type.
-This approach allows to save computation time in four ways: the sample-independent data and computation can be reused for every sample of an ensemble, the memory access pattern is improved,
-the operations on the ensemble type can be vectorized efficiently, and the message passing costs are reduced by sending fewer but larger messages.
-However, the approach requires solvers and BLAS functions to be aware of the extra dimension associated to the ensemble; for example, a GMRES for ensemble types~\cite{liegeois2020gmres} needs to monitor
-the convergence of the individual samples in order to decide when to stop based on the union of the information.
+the values of input, output, and state variables for every sample of an ensemble. This type can then be used within the Tpetra solver stack as \revised{an argument for its scalar type template parameter, allowing instantiation of Tpetra data structures on the ensemble type to propagate ensembles through supported linear solvers and preconditioners}.
+This approach \revised{results in reduced} computation time in four ways: the sample-independent data and computation can be reused for every sample of an ensemble, memory access patterns can be improved,
+operations on the ensemble type can be vectorized efficiently, and message passing costs can be reduced by sending fewer but larger messages.
+However, the approach requires solvers and BLAS functions to be aware of the extra dimension associated to the ensemble; for example, GMRES for ensemble types~\cite{liegeois2020gmres} needs to monitor
+the convergence of the individual samples in order to decide when to terminate based on \revised{whether every sample within the ensemble has satisfied the chosen stopping criteria}.
 
 \subsection{Nonlinear Analysis Tools: Piro}
 %Piro~\cite{osti_1231283} is the top-level, unifying package for nonlinear analysis.
