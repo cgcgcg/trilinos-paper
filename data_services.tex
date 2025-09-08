@@ -4,7 +4,10 @@
 The Core product area provides essential tools for managing and distributing data across processing elements in parallel computing environments, addressing challenges such as load balancing and data redistribution. Key components discussed here include the Kokkos performance portability framework, Teuchos tools, Tpetra distributed-memory linear algebra, Thyra abstractions for high-level formulations of numerical algorithms, and Zoltan2 for combinatorial algorithms in parallel computing.
 
 \subsection{Performance Portability: Kokkos Core}\label{subsec:kokkos}
-Kokkos Core\footnote{For historical reasons the package name is ``Kokkos'' since it precedes the creation of other Kokkos subprojects such as Kokkos Kernels.} is a programming model designed for performance portability across hardware architectures such as CPUs and GPUs. Two primary insights into achieving performance portability shaped Kokkos' development:
+Kokkos Core\footnote{For historical reasons the package name is ``Kokkos'' since it precedes the creation of other Kokkos subprojects such as Kokkos Kernels.} is a programming model designed for performance portability across hardware architectures such as CPUs and GPUs.
+\revised{While the development of Kokkos Core has originated as a package of Trilinos, Kokkos has become an independent project in \todo{add year}
+and is nowadays snapshotted into Trilinos for the pure convenience of dependency management.}
+Two primary insights into achieving performance portability shaped Kokkos' development:
 i) abstractions for both parallel execution and data structures are required, and
 ii) the fundamental programming model must be descriptive rather than prescriptive.
 
@@ -12,6 +15,7 @@ The Kokkos programming model includes \texttt{execution spaces} to specify where
 these concepts is \texttt{Kokkos::View}, a multidimensional array abstraction that inspired
 the ISO C++23 \texttt{mdspan} class\footnote{\url{https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2022/p0009r18.html}}. Detailed descriptions of Kokkos Core can be found
 in~\cite{edwards2014} and \cite{trott2022kokkos}.
+Development of Kokkos Core itself is carried out in its own GitHub repository\footnote{https://github.com/kokkos/kokkos}.
 
 \subsection{Performance Portable Kernels: Kokkos Kernels}\label{subsec:kk}
 Kokkos Kernels~\cite{rajamanickam2021kokkoskernels} is part of the Kokkos ecosystem~\cite{trott2021kokkos} and provides node-local implementations of mathematical kernels widely used across packages in Trilinos. As a member of the Kokkos ecosystem, Kokkos Kernels tightly integrates Kokkos features and aims at delivering performance\hyp{}portable algorithms across major CPU- and GPU-based HPC systems. Due to its node-local nature, Kokkos Kernels does not rely on MPI or other communication libraries, unlike numerous other packages in Trilinos.
