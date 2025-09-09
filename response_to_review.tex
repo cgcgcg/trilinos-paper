@@ -33,7 +33,7 @@
 
 %% Insert title and list of authors
 \title{{\small Response to the review of the manuscript:}\\Trilinos: Enabling Scientific Computing across Diverse Hardware Architectures at Scale}
-\author{Matthias Mayr, Alexander Heinlein, Christian A. Glusa, Sivasankaran Rajamanickam, Maarten Arnst, Roscoe A. Bartlett, Luc Berger-Vergiat, Erik G. Boman, Karen D. Devine, Graham Harper, Michael A. Heroux, Mark Hoemmen, Jonathan J. Hu, Brian Kelley, Drew P. Kouri, Paul Kuberry, Kyungjoo Kim, Kim Liegois, Curtis C. Ober, Roger P. Pawlowski, Carl Pearson, Mauro Perego, Eric T. Phipps, Denis Ridzal, Nathan V. Roberts, Christopher M. Siefert, Heidi K. Thornquist, Romin Tomasetti, Christian R. Trott, Raymond S. Tuminaro, James M. Willenbring, Michael Wolf, Ichitaro Yamazaki}
+\author{Matthias Mayr \and Alexander Heinlein \and Christian A. Glusa \and Sivasankaran Rajamanickam \and Maarten Arnst \and Roscoe A. Bartlett \and Luc Berger-Vergiat \and Erik G. Boman \and Karen D. Devine \and Graham Harper \and Michael A. Heroux \and Mark Hoemmen \and Jonathan J. Hu \and Brian Kelley \and Drew P. Kouri \and Paul Kuberry \and Kyungjoo Kim \and Kim Liegois \and Curtis C. Ober \and Roger P. Pawlowski \and Carl Pearson \and Mauro Perego \and Eric T. Phipps \and Denis Ridzal \and Nathan V. Roberts \and Christopher M. Siefert \and Heidi K. Thornquist \and Romin Tomasetti \and Christian R. Trott \and Raymond S. Tuminaro \and James M. Willenbring \and Michael Wolf \and Ichitaro Yamazaki}
 \date{\today}
 
 \begin{document}
@@ -281,11 +281,20 @@ While Tpetra offers distributed linear algebra, it does not compute the layout o
 
 \Comment{Page 10, subsec 3.3, par 1 -- ``wide range of challeging problems'' Like what? Perhaps the paragraph starting with ``FROSch has been applied...'' should be moved to an earlier position in the subsection.}
 
-\Response{\todo{respond}}
+\Response{The sentence
+\begin{quote}
+  Besides \emph{parallel scalability}, FROSch emphasizes \emph{applicability and robustness across a wide range of challenging problems} while supporting \emph{algebraic construction} of the preconditioners, that is, solely from the fully assembled system matrix.
+\end{quote}
+highlights several important properties of FROSch. In the next paragraph, we first focus on the algorithmic aspects that enable parallel scalability and algebraicity. The sentence in question, which has also been slightly reformulated, then begins the following paragraph and addresses the wide range of applicability. We find it natural to separate these two aspects into distinct paragraphs and hope the referee agrees with this structure.}
 
 \Comment{Page 10, subsec 3.3, last sentence -- ``..with performance gains... on GPU'' It would help to be more explicit here by at least mentioning the order of magnitude of the gains.}
 
-\Response{\todo{respond}}
+\Response{We have added
+\begin{quote}
+  speedups of up to $4.8\times$ are observed when comparing ILU solve times on CPU and GPU
+\end{quote}
+to indicate best case performance gains from using GPUs.
+}
 
 \Comment{Page 11, par 1 -- ``MueLu is extensible and allow for the reseacrh and developemnt of new...'' The package allows for the research and development? Unclear what is meant by the author. Just two lines below ``Blue Gene/Q system'' This is a quite old system and the data referring to it is quite outdated. I suggest to cite something more recent.}
 
@@ -430,11 +439,11 @@ strengthen its utility, strong and weak scaling plots of FROSch, MueLu, and ROL
 on at least two architectures (e.g., AMD+ROCm vs. NVIDIA+CUDA), to validate
 performance portability claims.}
 
-\Response{We agree that a discussion of performance results could make the manuscript more interesting.
-  However, we do not think that this is feasible as it would significantly increase the scope.
-  A lot more algorithmic detail would be required in order to provide a reasonable explanation of what platforms and scaling experiments are being run.
+\Response{
+  We agree that a discussion of performance results could make the manuscript more interesting.
+  However, we do not think this is feasible, as it would significantly increase the scope. Providing such results would require much more algorithmic detail in order to reasonably explain what platforms and scaling experiments are being run.
   Moreover, selecting a subset of problems and packages to illustrate a representative snapshot of ``performance of Trilinos'' seems extremely daunting given the breadth of algorithms.
-  The current manuscript is already well beyond the usual page limit of the journal.
+  Finally, the current manuscript is already well beyond the usual page limit of the journal, it is already way too long, and detailed numerical results and fair comparisons go far beyond what we can reasonably show in this paper.
 }
 
 \Comment{The manuscript is a high-quality overview of a critical scientific
