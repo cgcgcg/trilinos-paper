@@ -66,6 +66,8 @@ Yes, Tpetra can be used with the linear solvers, but it's so much more than that
 \end{itemize}~%
 }
 
+\todo{Matthias: The reviewer (probably Nathaniel Morgan) explicitly asks for citing a specific code and paper and provides an outline on how he wants the Tpetra section to be rewritten. I do not agree with his assessment, yet we need to be aware that this is his only request for change and we are about to deny it.}
+
 \Response{
   Tpetra provides sparse distributed linear algebra.
   This does not mean that it can only be used in the context of the solution of linear systems.
@@ -156,18 +158,24 @@ areas or packages described. This is an important shortcoming because it may fai
 additional users to Trilinos which, I believe, would be a desirable outcome of the manuscript.
 This could be also the result of a manuscript which has probably seen many authors contributing.
 Despite the fact that the language level is fairly uniform, there are subsections that are clearly
-more effective in delivering their content than others (see detailed comments).\\\\
-Overall, I believe the manuscript is definitely worth considering for publication as long as the
-detailed comments listed below are taken into consideration.}
+more effective in delivering their content than others (see detailed comments).}
 
-\Response{Respond to the reviewer's comment.
-Explain why we did changes to the manuscript based on his/her comment.}
+\Response{We are aware that parts of the paper can leave the impression of being very terse and might require some background knowledge on the underlying mathematical methods.
+Given the variety of algorithms included in Trilinos, it might be too big of a task to describe all algorithms in full detail in a single manuscript, especially given page limits of scientific journals.
+As the reviewer observes, the manuscript already exceeds 30 pages.
+The main goal of this manuscript is to provide an update on recent changes to the overall Trilinos project,
+in particular its adoption of the Kokkos programming model to enable performance portability across hardware architectures.
+To maintain a finite scope, the reader is referred to the packages' documentation or individual publications for details on concrete algorithms in specific software packages.}
+
+
+\Comment{Overall, I believe the manuscript is definitely worth considering for publication as long as the
+detailed comments listed below are taken into consideration.}
 
 \noindent\textbf{Section 1}
 \Comment{Page 3, subsec 1.1, paragraph 3 – ``... execution and memory spaces...'' Please provide an
 explicit explanation of is intended with the spaces above.}
 
-\Response{We have added short explanations for the purpose of spaces.}
+\Response{We have added short explanations for the purpose of execution and memory spaces.}
 
 \Comment{Page 3, subsec 1.2, par. 2 – Please define explicitly the meaning of the term ``snapshotting''}
 
@@ -179,7 +187,7 @@ i.e., incorporated as fixed copies of their source code at a specific point in t
 \Comment{Page 5, par 1 – What is exactly intended with ``high-level'' algorithms? Is there something like
 “low-level” algorithms?}
 
-\Response{We used ``high-level'' to distinguish from lower level algorithms from sparse linear algebra and linear solvers. The distinction is not needed in this context and we removed ``high-level''.}
+\Response{We used ``high-level'' to distinguish from lower level algorithms from sparse linear algebra and linear solvers. The distinction is not needed in this context and we removed both experssions, ``high-level'' and ``low-level''.}
 
 \Comment{Page 5, par 1 and 2 – automatic differentiation is mentioned in both the ``Non-linear Solvers
 and Analysis Tools'' and ``Discretization Tools''. I would suggest that already at this stage an
@@ -215,7 +223,14 @@ The present manuscript introduces these new packages and their capabilities and 
 
 \Comment{Page 5-6 -- A general comment is in order here. It is not clear how much of the Kokkos development is carried out under the Trilinos framework and how much is external/independent. Could you please make this as much as possible explicit?}
 
-\Response{\todo{respond}}
+\Response{Kokkos and its subprojects are nowadays developed independently and outside of Trilinos. For convenience, Kokkos releases are snapshotted into Trilinos. We have added a sentence to clarify this:}
+
+\Changes{While the development of Kokkos Core has originated as a package of Trilinos, Kokkos has become an independent project in \todo{add year}
+and is nowadays snapshotted into Trilinos for the pure convenience of dependency management.}
+
+\Response{Furthermore:}
+
+\Changes{Development of Kokkos Core itself is carried out in its own GitHub repository\footnote{https://github.com/kokkos/kokkos}.}
 
 \Comment{Page 6, subsec 2.3 -- From the way Teuchos is described I would rather call it a ``programming interface''. The word ``tools'' convey the wrong impression, in my opinion.}
 
@@ -426,7 +441,12 @@ FROSch, ROL), showing performance on various architectures, scaling trends, and
 comparing to earlier versions of Trilinos would enrich the manuscript
 significantly.}
 
-\Response{See next response.}
+\Response{We agree that a discussion of performance results could make the manuscript more interesting for readers with an interest in particular algorithms of packages of Trilinos.
+  However, we do not think that this is feasible as it would significantly increase the scope.
+  A lot more algorithmic detail would be required in order to provide a reasonable explanation of what platforms and scaling experiments are being run.
+  Moreover, selecting a subset of problems and packages to illustrate a representative snapshot of ``performance of Trilinos'' seems extremely daunting given the breadth of algorithms.
+  The current manuscript is already well beyond the usual page limit of the journal.
+}
 
 \Comment{Details on versioning, release engineering (TriBITS), and continuous integration
 are well-covered, but could be expanded providing a table of build/test matrix
@@ -439,12 +459,7 @@ strengthen its utility, strong and weak scaling plots of FROSch, MueLu, and ROL
 on at least two architectures (e.g., AMD+ROCm vs. NVIDIA+CUDA), to validate
 performance portability claims.}
 
-\Response{
-  We agree that a discussion of performance results could make the manuscript more interesting.
-  However, we do not think this is feasible, as it would significantly increase the scope. Providing such results would require much more algorithmic detail in order to reasonably explain what platforms and scaling experiments are being run.
-  Moreover, selecting a subset of problems and packages to illustrate a representative snapshot of ``performance of Trilinos'' seems extremely daunting given the breadth of algorithms.
-  Finally, the current manuscript is already well beyond the usual page limit of the journal, it is already way too long, and detailed numerical results and fair comparisons go far beyond what we can reasonably show in this paper.
-}
+\Response{Please see our previous response.}
 
 \Comment{The manuscript is a high-quality overview of a critical scientific
 infrastructure. With the addition of quantitative benchmarks and minor editorial
