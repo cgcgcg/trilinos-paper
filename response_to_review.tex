@@ -196,7 +196,12 @@ Since the distinction is not needed in this context, we removed both expressions
 and Analysis Tools'' and ``Discretization Tools''. I would suggest that already at this stage an
 explanation of the difference between these AD is provided}
 
-\Response{The discretization schemes provided by Trilinos have AD capabilities, which is why AD was mentioned in this paragraph as well. We have rephrased the paragraph to make it clearer that these are not different types of AD.}
+\Response{AD plays an important role in many aspects of computational science.
+Thus, it is used in different packages of Trilinos.
+Section 4.3 introduces Sacado, Trilinos' AD framework, which is formally part of ``Nonlinear solvers and analysis tools''.
+The discretization schemes provided by Trilinos use AD capabilities, which is why AD was mentioned in this paragraph as well.
+We have rephrased the paragraph to make it clearer that these are not different types of AD,
+but that AD used by discretization schemes refers back to the AD framework of ``Nonlinear solvers and analysis tools''.}
 
 \Comment{Page 5, subsec 1.3 – I would strongly recommend to give in this section an overview of how
 much has changed from the 2005 paper and current one. Implicitly, such a overview would give the
