@@ -275,7 +275,9 @@ and is nowadays snapshotted into Trilinos for the pure convenience of dependency
 
 \Comment{Page 8, par 1 -- ``... with the ANAs ... given in section 3.8'' Despite the text gives an example, I feel lost and find the example more confusing than illuminating.}
 
-\Response{\todo{respond}}
+\Response{We have rephrased this sentence to clarify, that Stratimikos is a concrete implementation of this concept inside Trilinos:}
+
+\Changes{[...] The solver interfaces allow one to wrap any concrete linear solver or preconditioner for use with the ANAs. As a concrete instantiation of this concept, Trilinos implements the Stratimikos package that wraps all of the Trilinos preconditioners and linear solvers in Thyra abstractions. [...]}
 
 \Comment{Page 8, subsec 2.6, par 3 -- ``Zoltan2 ... (via Kokkos)''. Another source of confusion. I understood that what is described here is Tpetra’s goal}
 
