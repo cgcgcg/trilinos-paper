@@ -71,7 +71,8 @@ Yes, Tpetra can be used with the linear solvers, but it's so much more than that
 \Response{
   Tpetra provides sparse distributed linear algebra.
   This does not mean that it can only be used in the context of the solution of linear systems.
-  Finite element discretizations provided by Intrepid2 and Panzer rely on Tpetra.
+  Trilinos is very well aware of Tpetra use cases besides solving linear systems:
+  for example, finite element discretizations provided by Intrepid2 and Panzer rely on Tpetra data structures.
   Optimization packages such as ROL can leverage Tpetra objects.
   In our view, ``linear algebra'' does not equate to ``solution of linear systems of equations''.
 }
@@ -187,13 +188,20 @@ i.e., incorporated as fixed copies of their source code at a specific point in t
 \Comment{Page 5, par 1 – What is exactly intended with ``high-level'' algorithms? Is there something like
 “low-level” algorithms?}
 
-\Response{We used ``high-level'' to distinguish from lower level algorithms from sparse linear algebra and linear solvers. The distinction is not needed in this context and we removed both experssions, ``high-level'' and ``low-level''.}
+\Response{We used ``high-level'' to distinguish from lower level algorithms from sparse linear algebra and linear solvers.
+We agree that this terminology lacks both rigor and generality.
+Since the distinction is not needed in this context, we removed both expressions, ``high-level'' and ``low-level''.}
 
 \Comment{Page 5, par 1 and 2 – automatic differentiation is mentioned in both the ``Non-linear Solvers
 and Analysis Tools'' and ``Discretization Tools''. I would suggest that already at this stage an
 explanation of the difference between these AD is provided}
 
-\Response{The discretization schemes provided by Trilinos have AD capabilities, which is why AD was mentioned in this paragraph as well. We have rephrased the paragraph to make it clearer that these are not different types of AD.}
+\Response{AD plays an important role in many aspects of computational science.
+Thus, it is used in different packages of Trilinos.
+Section 4.3 introduces Sacado, Trilinos' AD framework, which is formally part of ``Nonlinear solvers and analysis tools''.
+The discretization schemes provided by Trilinos use AD capabilities, which is why AD was mentioned in this paragraph as well.
+We have rephrased the paragraph to make it clearer that these are not different types of AD,
+but that AD used by discretization schemes refers back to the AD framework of ``Nonlinear solvers and analysis tools''.}
 
 \Comment{Page 5, subsec 1.3 – I would strongly recommend to give in this section an overview of how
 much has changed from the 2005 paper and current one. Implicitly, such a overview would give the
@@ -267,7 +275,9 @@ and is nowadays snapshotted into Trilinos for the pure convenience of dependency
 
 \Comment{Page 8, par 1 -- ``... with the ANAs ... given in section 3.8'' Despite the text gives an example, I feel lost and find the example more confusing than illuminating.}
 
-\Response{\todo{respond}}
+\Response{We have rephrased this sentence to clarify, that Stratimikos is a concrete implementation of this concept inside Trilinos:}
+
+\Changes{[...] The solver interfaces allow one to wrap any concrete linear solver or preconditioner for use with the ANAs. As a concrete instantiation of this concept, Trilinos implements the Stratimikos package that wraps all of the Trilinos preconditioners and linear solvers in Thyra abstractions. [...]}
 
 \Comment{Page 8, subsec 2.6, par 3 -- ``Zoltan2 ... (via Kokkos)''. Another source of confusion. I understood that what is described here is Tpetra’s goal}
 
