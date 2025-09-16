@@ -403,8 +403,11 @@ We have clarified that in the description of the Amesos2 package.}
 
 \Comment{Page 17, subsec 4.5, 1st bullet point -- Clarify what LOCA does and what Piro does. As it is I find it quite confusing. As a general comment, I also do not understand why interfaces and solvers have to be packed in separate packages. It increases the confusion.}
 
-\Response{We have added the following text to clarify the roles of LOCA and Piro: "The core capabilities for continuation and bifurcation analysis are provided through the package LOCA. The Piro driver integrates these functionalities with linear, nonlinear, and time integration solvers, enhancing flexibility and usability".
-Piro integrates several packages and solvers into a single interface, which cannot be confined to individual packages. However, each package maintains its own interfaces.}
+\Response{Piro integrates several packages and solvers into a single interface, which cannot be confined to individual packages. However, each package maintains its own interfaces.}
+
+\Response{We have added the following text to clarify the roles of LOCA and Piro:}
+
+\Changes{The core capabilities for continuation and bifurcation analysis are provided through the package LOCA. The Piro driver integrates these functionalities with linear, nonlinear, and time integration solvers, enhancing flexibility and usability.}
 
 \noindent\textbf{References}
 
