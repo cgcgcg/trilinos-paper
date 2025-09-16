@@ -1,14 +1,31 @@
-\documentclass[a4paper,10pt]{article}
+%\documentclass[a4paper,10pt]{article}
+\documentclass[manuscript,nonacm]{acmart}
+
+\AtBeginDocument{%
+  \let\oldmaketitle\maketitle
+  \renewcommand{\maketitle}{%
+    \oldmaketitle
+    \pagestyle{empty}% or plain
+    \fancyhead{}%
+    \fancyfoot{}%
+  }%
+}
+
+% numeric citations to match the main doc
+\citestyle{acmnumeric}
+
+\usepackage{enumitem}
+\setitemize{itemsep=0.0ex,topsep=-0.2ex,labelsep=0.5em}
 
 % include some standard latex packages
 \usepackage{geometry}
-\geometry{a4paper, top=25mm, left=25mm, right=25mm, bottom=30mm}
+\geometry{a4paper, top=25mm, left=25mm, right=25mm, bottom=30mm, head=20mm}
 
-\usepackage{graphicx}
-\usepackage{amssymb}
-\usepackage{amsfonts,amsmath,bm}
-\usepackage[mathscr]{eucal}
-\usepackage[amssymb,thinqspace,thinspace]{SIunits}
+%\usepackage{graphicx}
+%\usepackage{amssymb}
+%\usepackage{amsfonts,amsmath,bm}
+%\usepackage[mathscr]{eucal}
+%\usepackage[amssymb,thinqspace,thinspace]{SIunits}
 \usepackage{hyphenat}
 \usepackage{subfigure}
 \usepackage{float}
@@ -26,17 +43,19 @@
 %\usepackage{xr}
 \usepackage{xr-hyper}
 \usepackage{hyperref}
-\externaldocument{main}
+\usepackage{xcite}
+\externalcitedocument{main}
+
 
 %% redefine thanking if necessary
 %\renewcommand{\Thanks}{The authors would like to thank the reviewer ...}
+
+\begin{document}
 
 %% Insert title and list of authors
 \title{{\small Response to the review of the manuscript:}\\Trilinos: Enabling Scientific Computing across Diverse Hardware Architectures at Scale}
 \author{Matthias Mayr \and Alexander Heinlein \and Christian A. Glusa \and Sivasankaran Rajamanickam \and Maarten Arnst \and Roscoe A. Bartlett \and Luc Berger-Vergiat \and Erik G. Boman \and Karen D. Devine \and Graham Harper \and Michael A. Heroux \and Mark Hoemmen \and Jonathan J. Hu \and Brian Kelley \and Drew P. Kouri \and Paul Kuberry \and Kyungjoo Kim \and Kim Liegois \and Curtis C. Ober \and Roger P. Pawlowski \and Carl Pearson \and Mauro Perego \and Eric T. Phipps \and Denis Ridzal \and Nathan V. Roberts \and Christopher M. Siefert \and Heidi K. Thornquist \and Romin Tomasetti \and Christian R. Trott \and Raymond S. Tuminaro \and James M. Willenbring \and Michael Wolf \and Ichitaro Yamazaki}
 \date{\today}
-
-\begin{document}
 
 \maketitle
 
@@ -325,6 +344,8 @@ to indicate best case performance gains from using GPUs.
 
 \Response{We have modified the statement in question to better explain how MueLu's flexibility can be leveraged for algorithmic development.}
 
+\Response{Performance and scaling studies on the El Capitan system are work in progress. When ready, we plan to publish them in a separate, fully MueLu-centered manuscript.}
+
 \Comment{Page 12, subsec 3.5 -- The direct solvers described in this section seem to be application specific. Nothing wrong with it but it should be perhaps emphasized if they could be used with other problems.}
 
 \Response{We have rearranged the content of this section, such that we first describe Amesos2 with its solvers with general applicability and then detail more application-targeted solvers in ShyLU.
@@ -336,7 +357,11 @@ We have added statements to make this distinction clear to the reader.}
 
 \Comment{Page 12, subsec 3.5, par 3 -- ``In addition... FROSch).'' So both Taco and Basker are node-level solvers only? This was not clear. Perhaps it could be made more explicit.}
 
-\Response{\todo{respond}}
+\Response{Yes, both are shared-memory sparse direct solvers. We have added this important piece of information to the first occurrences of these packages:}
+
+\Changes{Basker~\cite{Basker2017} is a shared-memory sparse direct solver [...]}
+
+\Changes{Tacho is a shared-memory sparse direct solver [...]}
 
 \Comment{Page 12, subsec 3.5, last par -- From this paragraph I evince that Amesos2 is only an interface not a solver package. Is this correct? Please clarify.}
 
@@ -375,7 +400,7 @@ We have clarified that in the description of the Amesos2 package.}
 
 \Comment{Page 15, subsec 4.2, last bullet point -- I find the description of this package based on the assumption that the only viable discretization is based on finite elements. What about finite differences? Perhaps this should be exemplified.}
 
-\Response{\todo{respond}}
+\Response{\todo{Is this true?}This capability of ROL is geared towards finite elements. To avoid confusion, we have update the text to clearly limit the scope to finite element methods.}
 
 \Comment{Page 16, subsec 4.4, par 2 -- ``... to be outer-spatial and inner stochastic'' I have no idea what this sentence mean. This is a bit too cryptic.}
 
@@ -403,8 +428,11 @@ We have clarified that in the description of the Amesos2 package.}
 
 \Comment{Page 17, subsec 4.5, 1st bullet point -- Clarify what LOCA does and what Piro does. As it is I find it quite confusing. As a general comment, I also do not understand why interfaces and solvers have to be packed in separate packages. It increases the confusion.}
 
-\Response{We have added the following text to clarify the roles of LOCA and Piro: "The core capabilities for continuation and bifurcation analysis are provided through the package LOCA. The Piro driver integrates these functionalities with linear, nonlinear, and time integration solvers, enhancing flexibility and usability".
-Piro integrates several packages and solvers into a single interface, which cannot be confined to individual packages. However, each package maintains its own interfaces.}
+\Response{Piro integrates several packages and solvers into a single interface, which cannot be confined to individual packages. However, each package maintains its own interfaces.}
+
+\Response{We have added the following text to clarify the roles of LOCA and Piro:}
+
+\Changes{The core capabilities for continuation and bifurcation analysis are provided through the package LOCA. The Piro driver integrates these functionalities with linear, nonlinear, and time integration solvers, enhancing flexibility and usability.}
 
 \noindent\textbf{References}
 
