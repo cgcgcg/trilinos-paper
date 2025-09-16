@@ -1,14 +1,31 @@
-\documentclass[a4paper,10pt]{article}
+%\documentclass[a4paper,10pt]{article}
+\documentclass[manuscript,nonacm]{acmart}
+
+\AtBeginDocument{%
+  \let\oldmaketitle\maketitle
+  \renewcommand{\maketitle}{%
+    \oldmaketitle
+    \pagestyle{empty}% or plain
+    \fancyhead{}%
+    \fancyfoot{}%
+  }%
+}
+
+% numeric citations to match the main doc
+\citestyle{acmnumeric}
+
+\usepackage{enumitem}
+\setitemize{itemsep=0.0ex,topsep=-0.2ex,labelsep=0.5em}
 
 % include some standard latex packages
 \usepackage{geometry}
-\geometry{a4paper, top=25mm, left=25mm, right=25mm, bottom=30mm}
+\geometry{a4paper, top=25mm, left=25mm, right=25mm, bottom=30mm, head=20mm}
 
-\usepackage{graphicx}
-\usepackage{amssymb}
-\usepackage{amsfonts,amsmath,bm}
-\usepackage[mathscr]{eucal}
-\usepackage[amssymb,thinqspace,thinspace]{SIunits}
+%\usepackage{graphicx}
+%\usepackage{amssymb}
+%\usepackage{amsfonts,amsmath,bm}
+%\usepackage[mathscr]{eucal}
+%\usepackage[amssymb,thinqspace,thinspace]{SIunits}
 \usepackage{hyphenat}
 \usepackage{subfigure}
 \usepackage{float}
@@ -26,17 +43,19 @@
 %\usepackage{xr}
 \usepackage{xr-hyper}
 \usepackage{hyperref}
-\externaldocument{main}
+\usepackage{xcite}
+\externalcitedocument{main}
+
 
 %% redefine thanking if necessary
 %\renewcommand{\Thanks}{The authors would like to thank the reviewer ...}
+
+\begin{document}
 
 %% Insert title and list of authors
 \title{{\small Response to the review of the manuscript:}\\Trilinos: Enabling Scientific Computing across Diverse Hardware Architectures at Scale}
 \author{Matthias Mayr \and Alexander Heinlein \and Christian A. Glusa \and Sivasankaran Rajamanickam \and Maarten Arnst \and Roscoe A. Bartlett \and Luc Berger-Vergiat \and Erik G. Boman \and Karen D. Devine \and Graham Harper \and Michael A. Heroux \and Mark Hoemmen \and Jonathan J. Hu \and Brian Kelley \and Drew P. Kouri \and Paul Kuberry \and Kyungjoo Kim \and Kim Liegois \and Curtis C. Ober \and Roger P. Pawlowski \and Carl Pearson \and Mauro Perego \and Eric T. Phipps \and Denis Ridzal \and Nathan V. Roberts \and Christopher M. Siefert \and Heidi K. Thornquist \and Romin Tomasetti \and Christian R. Trott \and Raymond S. Tuminaro \and James M. Willenbring \and Michael Wolf \and Ichitaro Yamazaki}
 \date{\today}
-
-\begin{document}
 
 \maketitle
 
