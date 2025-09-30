@@ -384,23 +384,33 @@ We have clarified that in the description of the Amesos2 package.}
 
 \Comment{Page 14, subsec 4.2, par 1 -- ``any computational hardware'' A bit too eager of a statement. Does it include neuromorphic architectures of FPGAS or Quantum accelerators? I doubt it. Just tone it down. Also later ``many-core systems'' is a term that refers already to accelerators as opposed to multi-core systems. Please correct.}
 
-\Response{\todo{respond}}
+\Response{Fixed.}
 
 \Comment{Page 14, subsec 4.2, first bullet point -- ``ROL::Vector class...'' Can you explain why there is the need for another abstraction for vectors on top of the one already provided by other packages?}
 
-\Response{\todo{respond}}
+\Response{While ROL requires a limited subset of operations provided by Thyra vectors,
+Thyra and other packages do not provide the concept of duality pairings for vector spaces,
+which is needed for efficient infinite-dimensional optimization, such as optimization with
+differential equations.}
 
 \Comment{Page 15, subsec 4.2, 2nd bullet point -- ``risck-averse problems'' I think there should be a definition of this concept for the non-expert reader.}
 
-\Response{\todo{respond}}
+\Response{In this context ``stochastic problems'' is a better term.  We have changed this accordingly.
+By ``risk-averse problems,'' we meant stochastic optimization problems that
+minimize risk measures such as conditional value at risk.}
 
 \Comment{Page 15, subsec 4.2, 3rd bullet point -- ``data science and machine learning'' Perhaps a reference here? LASSO? Else?}
 
-\Response{\todo{respond}}
+\Response{We added a reference to ``Extreme sparsification of physics-augmented neural networks
+for interpretable model discovery in mechanics,'' by Fuhg, Jones, and Bouklas (2024), where the
+authors combine neural network-based data-driven constitutive modeling with sparse regression.
+}
 
 \Comment{Page 15, subsec 4.2, last bullet point -- I find the description of this package based on the assumption that the only viable discretization is based on finite elements. What about finite differences? Perhaps this should be exemplified.}
 
-\Response{\todo{Is this true?}This capability of ROL is geared towards finite elements. To avoid confusion, we have update the text to clearly limit the scope to finite element methods.}
+\Response{This capability of ROL is geared toward finite elements.
+To avoid confusion, we have updated the text to clearly limit the
+scope to finite element methods.}
 
 \Comment{Page 16, subsec 4.4, par 2 -- ``... to be outer-spatial and inner stochastic'' I have no idea what this sentence mean. This is a bit too cryptic.}
 
