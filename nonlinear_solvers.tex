@@ -33,14 +33,15 @@ LOCA provides several continuation methods, including pseudo-arclength continuat
 Rapid Optimization Library (ROL) \cite{rol,ROL2022ICCOPT} is the
 Trilinos package for numerical optimization. ROL brings an extensive
 collection of state-of-the-art optimization algorithms to virtually
-any application. Its programming interface supports any computational
-hardware, including heterogeneous many-core systems with digital and
-analog accelerators.
+any application.
+\revised{Its programming interface supports modern computational
+hardware, including heterogeneous multi-core systems.}
 ROL has been used with great success for optimal control, optimal design,
-inverse problems, image processing, and mesh optimization. Application areas include geophysics, climate science \cite{Perego2022}, structural
-dynamics \cite{AQUINO2019323,BUNTING2021107295}, fluid dynamics
-\cite{Antil2023}, electromagnetics, quantum computing, hypersonics, and
-geospatial imaging \cite{Kouri2014}.
+inverse problems, image processing, and mesh optimization. Application areas
+include geophysics, climate science~\cite{Perego2022}, structural
+dynamics~\cite{AQUINO2019323,BUNTING2021107295}, fluid dynamics~\cite{Antil2023},
+electromagnetics, quantum computing, hypersonics, and
+geospatial imaging~\cite{Kouri2014}.
 
 The key design, performance, and algorithmic features of ROL can be
 summarized as follows:
@@ -52,9 +53,10 @@ algorithms, ROL's design is centered around an abstract linear algebra
 interface, through the \code{ROL::Vector} class, which enables the use of any
 ROL algorithm with any data type, such as the C++ \code{std::vector}, MPI-parallel
 data structures (e.g., Epetra, Tpetra, PETSc, HYPRE vectors), GPU-supporting data
-structures (e.g., Kokkos, ArrayFire \cite{Yalamanchili2015}), etc.  The abstract
-linear algebra interface further enables the definition of custom vector dot
-products, which are critical for performance in large-scale applications.
+structures (e.g., Kokkos, ArrayFire \cite{Yalamanchili2015}), etc.
+\revised{In contrast to other vector implementations, ROL's abstract linear algebra
+interface also enables the definition of custom vector dot products with duality pairings,
+which are critical for performance in large-scale optimization with differential equations.}
 Finally, all ROL algorithms are matrix-free and rely on user-defined
 applications of linear and nonlinear operators.  ROL's vector class design is
 inspired by the Hilbert Class Library \cite{hcl}, the Rice Vector Library \cite{rvl},
@@ -80,17 +82,18 @@ Optimization problems with stochastic and uncertain problem data pose challenges
 in problem formulation and efficient numerical solution methods.  ROL's interface
 for stochastic optimization enables the use of numerous modern risk measures,
 probabilistic functions, and robust problem formulations. To approximate
-risk-averse problems~\cite{shapiro2021lectures}, ROL includes sample-based
+\revised{stochastic problems}~\cite{shapiro2021lectures}, ROL includes sample-based
 approaches such as sample average approximation, stochastic approximation, and
 adaptive sparse-grid quadrature~\cite{kouri2013trust,kouri2014inexact}. ROL
-also includes specialized algorithms such as progressive hedging~\cite{rockafellar1991scenarios} and the primal-dual risk minimization algorithm~\cite{kouri2022primal}.
+also includes specialized algorithms such as progressive hedging~\cite{rockafellar1991scenarios}
+and the primal-dual risk minimization algorithm~\cite{kouri2022primal}.
 \item
 \emph{Fast and robust algorithms for nonsmooth optimization:}
 ROL includes specialized algorithms to minimize the sum of a smooth function
 and a nonsmooth, convex function.  This class of problems is ubiquitous in
 computational science.  For example, nonsmooth sparsifying regularizers such as
-the $\ell^1$-norm are common in data science and machine learning.  These
-algorithms can be used to solve convex constrained optimization problems.
+the $\ell^1$-norm are common in data science and machine learning~\cite{fuhg2024extreme}.
+These algorithms can be used to solve convex constrained optimization problems.
 ROL's methods for this class of problems are built on the proximity operator
 and include proximal gradient and Newton methods
 \cite{beck2017first,kanzow2021globalized,ochs2014iPiano}.
@@ -109,8 +112,8 @@ and their ROL implementations, see \cite{Kouri2018}.
 \item
 \emph{PDE-OPT application development kit for PDE-constrained optimization:}
 To build and optimize models based on partial differential equations (PDEs),
-ROL offers an application development kit called PDE-OPT \revised{for finite element models}. PDE-OPT is based on a
-modular design with three layers: local finite element computations,
+ROL offers an application development kit \revised{for finite element models, called PDE-OPT}.
+PDE-OPT is based on a modular design with three layers: local finite element computations,
 which encode the physical equations governing the optimization problem;
 global computations, which utilize Tpetra data structures;
 and an interface to ROL, enabling efficient optimization.
