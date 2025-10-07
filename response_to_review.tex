@@ -348,16 +348,23 @@ to indicate best case performance gains from using GPUs.
 
 \Comment{Page 12, subsec 3.5 -- The direct solvers described in this section seem to be application specific. Nothing wrong with it but it should be perhaps emphasized if they could be used with other problems.}
 
-\Response{We have rearranged the content of this section, such that we first describe Amesos2 with its solvers with general applicability and then detail more application-targeted solvers in ShyLU.
-We have added statements to make this distinction clear to the reader.}
+\Response{We have rearranged the content of this section, such that we first describe Amesos2 with its solvers with general applicability and
+then detail more application-targeted solvers in ShyLU.
+We have added statements to make this distinction clear to the reader.  While the motivation for the development of solvers within ShyLU are
+application specific, they are reasonably general purpose. Basker, for example, could be used in the same context as KLU. It is a
+non-supernodal direct solver that relies on Block Triangular Form similar to KLU. It works even this structure is not present. However, it is not
+the most efficient. Similarly, Tacho has been optimized for special class of problems. We have clarified this. }
 
 \Comment{Page 12, subsec 3.5, par 2 -- I am not sure of the definition of BTF here. Is it really block triangular or should it be block tridiagonal? Please check. At the end of the paragraph the acronym KLU is undefined.}
 
-\Response{\todo{respond}}
+\Response{This is Block Triangular Form. KLU (cite KLU https://dl.acm.org/doi/pdf/10.1145/1824801.1824814) also relies on BTF which was
+originally inspired Gilbert and Peierls algorithm (https://epubs.siam.org/doi/10.1137/0909058). KLU is a pun instead of the abbreviation. It
+comes from "Clark Kent" LU, as Gilbert Peierls algorithm is the LU algorithm that came before LU factorization became "Super"LU ! We leave
+this explanation out of the paper.  }
 
 \Comment{Page 12, subsec 3.5, par 3 -- ``In addition... FROSch).'' So both Taco and Basker are node-level solvers only? This was not clear. Perhaps it could be made more explicit.}
 
-\Response{Yes, both are shared-memory sparse direct solvers. We have added this important piece of information to the first occurrences of these packages:}
+\Response{Yes, Tacho and Basker are designed to be only node level solvers.}
 
 \Changes{Basker~\cite{Basker2017} is a shared-memory sparse direct solver [...]}
 
@@ -365,7 +372,8 @@ We have added statements to make this distinction clear to the reader.}
 
 \Comment{Page 12, subsec 3.5, last par -- From this paragraph I evince that Amesos2 is only an interface not a solver package. Is this correct? Please clarify.}
 
-\Response{Amesos2 implements one direct solver, KLU2, itself and provides interfaces to direct solvers in third-party libraries as well as in the Trilinos package ShyLU.
+\Response{Amesos2 implements one direct solver, KLU2,  and provides interfaces to direct solvers in third-party libraries as well as in the
+Trilinos package ShyLU.
 We have clarified that in the description of the Amesos2 package.}
 
 \Comment{Page 12-13, subsec 3.6 -- The whole subsection is a bit unclear. I don’t have a clear idea of what Teko does. An example could perhaps clarify its scope.}
