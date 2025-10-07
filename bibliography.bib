@@ -17,6 +17,17 @@
   title = {{MueLu User's Guide}},
   year = {2023}}
 
+@article{Davis2010a,
+  author = {Davis, Timothy A. and Palamadai Natarajan, Ekanathan},
+  doi = {10.1145/1824801.1824814},
+  journal = {ACM Transactions on Mathematical Software},
+  number = {3},
+  pages = {1--17},
+  title = {{Algorithm 907: KLU, A Direct Sparse Solver for Circuit Simulation Problems}},
+  url = {https://doi.org/10.1145/1824801.1824814},
+  volume = {37},
+  year = {2010}}
+
 @techreport{Gee2006a,
   address = {Albuquerque, NM (USA) 87185},
   author = {Gee, Michael W. and Siefert, Christopher M. and Hu, Jonathan J. and Tuminaro, Ray S. and Sala, Marzio G.},
@@ -24,6 +35,17 @@
   number = {SAND2006-2649},
   title = {{ML 5.0 Smoothed Aggregation User's Guide}},
   year = {2006}}
+
+@article{Gilbert1988a,
+  author = {Gilbert, John R. and Peierls, Tim},
+  doi = {10.1137/0909058},
+  journal = {SIAM Journal on Scientific and Statistical Computing},
+  number = {5},
+  pages = {862--874},
+  title = {Sparse Partial Pivoting in Time Proportional to Arithmetic Operations},
+  url = {https://doi.org/10.1137/0909058},
+  volume = {9},
+  year = {1988}}
 
 @article{Heroux2005a,
   author = {Heroux, Michael A. and Bartlett, Roscoe A. and Howle, Vicki E. and Hoekstra, Robert J. and Hu, Jonathan J. and Kolda, Tamara G. and Lehoucq and Long, Kevin R. and Pawlowski, Roger P. and Phipps, Eric T. and Salinger, Andrew G. and Thornquist, Heidi K. and Tuminaro, Ray S. and Willenbring, James M. and Williams, Alan and Stanley, Kendall S.},
@@ -178,9 +200,9 @@
 }
 
 @article{heinlein_comparison_2025,
-	title = {Comparison of Monolithic and Block Preconditioners for the Incompressible {Navier--Stokes} Equations Using {FROSch} Within the {Trilinos} Library},
-	author = {Heinlein, Alexander and Klawonn, Axel and Knepper, Jascha and Sa\ss mannshausen, Lea},
-	note = {In preparation}
+  title = {Comparison of Monolithic and Block Preconditioners for the Incompressible {Navier--Stokes} Equations Using {FROSch} Within the {Trilinos} Library},
+  author = {Heinlein, Alexander and Klawonn, Axel and Knepper, Jascha and Sa\ss mannshausen, Lea},
+  note = {In preparation}
 }
 
 @inproceedings{heinlein_improving_2018,
@@ -267,19 +289,19 @@
 
 
 @inproceedings{yamazaki_experimental_2023,
-	title = {An {Experimental} {Study} of {Two}-level {Schwarz} {Domain}-{Decomposition} {Preconditioners} on {GPUs}},
-	isbn = {9798350337662},
-	url = {https://www.computer.org/csdl/proceedings-article/ipdps/2023/376600a680/1OSI79WG8c8},
-	doi = {10.1109/IPDPS54959.2023.00073},
-	abstract = {The generalized Dryja–Smith–Widlund (GDSW) preconditioner is a two-level overlapping Schwarz domain decomposition (DD) preconditioner that couples a classical one-level overlapping Schwarz preconditioner with an energy-minimizing coarse space. When used to accelerate the convergence rate of Krylov subspace iterative methods, the GDSW preconditioner provides robustness and scalability for the solution of sparse linear systems arising from the discretization of a wide range of partial different equations. In this paper, we present FROSch (Fast and Robust Schwarz), a domain decomposition solver package which implements GDSW-type preconditioners for both CPU and GPU clusters. To improve the solver performance on GPUs, we use a novel decomposition to run multiple MPI processes on each GPU, reducing both solver’s computational and storage costs and potentially improving the convergence rate. This allowed us to obtain competitive or faster performance using GPUs compared to using CPUs alone. We demonstrate the performance of FROSch on the Summit supercomputer with NVIDIA V100 GPUs, where we used NVIDIA Multi-Process Service (MPS) to implement our decomposition strategy.The solver has a wide variety of algorithmic and implementation choices, which poses both opportunities and challenges for its GPU implementation. We conduct a thorough experimental study with different solver options including the exact or inexact solution of the local overlapping subdomain problems on a GPU. We also discuss the effect of using the iterative variant of the incomplete LU factorization and sparse-triangular solve as the approximate local solver, and using lower precision for computing the whole FROSch preconditioner. Overall, the solve time was reduced by factors of about 2× using GPUs, while the GPU acceleration of the numerical setup time depend on the solver options and the local matrix sizes.},
-	language = {English},
-	urldate = {2023-11-01},
-	publisher = {IEEE Computer Society},
-	author = {Yamazaki, Ichitaro and Heinlein, Alexander and Rajamanickam, Sivasankaran},
-	month = may,
-	year = {2023},
-	pages = {680--689},
-	file = {Submitted Version:/home/alexander/work/documents/literature/zotero/storage/P69K25XR/Yamazaki et al. - 2023 - An Experimental Study of Two-level Schwarz Domain-.pdf:application/pdf},
+  title = {An {Experimental} {Study} of {Two}-level {Schwarz} {Domain}-{Decomposition} {Preconditioners} on {GPUs}},
+  isbn = {9798350337662},
+  url = {https://www.computer.org/csdl/proceedings-article/ipdps/2023/376600a680/1OSI79WG8c8},
+  doi = {10.1109/IPDPS54959.2023.00073},
+  abstract = {The generalized Dryja–Smith–Widlund (GDSW) preconditioner is a two-level overlapping Schwarz domain decomposition (DD) preconditioner that couples a classical one-level overlapping Schwarz preconditioner with an energy-minimizing coarse space. When used to accelerate the convergence rate of Krylov subspace iterative methods, the GDSW preconditioner provides robustness and scalability for the solution of sparse linear systems arising from the discretization of a wide range of partial different equations. In this paper, we present FROSch (Fast and Robust Schwarz), a domain decomposition solver package which implements GDSW-type preconditioners for both CPU and GPU clusters. To improve the solver performance on GPUs, we use a novel decomposition to run multiple MPI processes on each GPU, reducing both solver’s computational and storage costs and potentially improving the convergence rate. This allowed us to obtain competitive or faster performance using GPUs compared to using CPUs alone. We demonstrate the performance of FROSch on the Summit supercomputer with NVIDIA V100 GPUs, where we used NVIDIA Multi-Process Service (MPS) to implement our decomposition strategy.The solver has a wide variety of algorithmic and implementation choices, which poses both opportunities and challenges for its GPU implementation. We conduct a thorough experimental study with different solver options including the exact or inexact solution of the local overlapping subdomain problems on a GPU. We also discuss the effect of using the iterative variant of the incomplete LU factorization and sparse-triangular solve as the approximate local solver, and using lower precision for computing the whole FROSch preconditioner. Overall, the solve time was reduced by factors of about 2× using GPUs, while the GPU acceleration of the numerical setup time depend on the solver options and the local matrix sizes.},
+  language = {English},
+  urldate = {2023-11-01},
+  publisher = {IEEE Computer Society},
+  author = {Yamazaki, Ichitaro and Heinlein, Alexander and Rajamanickam, Sivasankaran},
+  month = may,
+  year = {2023},
+  pages = {680--689},
+  file = {Submitted Version:/home/alexander/work/documents/literature/zotero/storage/P69K25XR/Yamazaki et al. - 2023 - An Experimental Study of Two-level Schwarz Domain-.pdf:application/pdf},
 }
 
 @article{heinlein_adaptive_2019,
@@ -1480,15 +1502,15 @@ abstract = {This study presents the development and evaluation of a fully-implic
 
 
 @article{Sala2008a,
-	author = {Sala, Marzio G. and Tuminaro, Ray S.},
-	doi = {10.1137/060659545},
-	journal = {SIAM Journal on Scientific Computing},
-	number = {1},
-	pages = {143--166},
-	title = {{A New Petrov--Galerkin Smoothed Aggregation Preconditioner for Nonsymmetric Linear Systems}},
-	url = {http://dx.doi.org/10.1137/060659545},
-	volume = {31},
-	year = {2008}}
+  author = {Sala, Marzio G. and Tuminaro, Ray S.},
+  doi = {10.1137/060659545},
+  journal = {SIAM Journal on Scientific Computing},
+  number = {1},
+  pages = {143--166},
+  title = {{A New Petrov--Galerkin Smoothed Aggregation Preconditioner for Nonsymmetric Linear Systems}},
+  url = {http://dx.doi.org/10.1137/060659545},
+  volume = {31},
+  year = {2008}}
 
 @article{REBAR2024,
 title={A discontinuous piecewise polynomial generalized moving least squares scheme for robust finite element analysis on arbitrary grids},
@@ -1526,23 +1548,23 @@ abstract = {We utilize generalized moving least squares (GMLS) to develop meshfr
 }
 
 @misc{heinlein2024couplingdealiifroschsustainable,
-	title={Coupling deal.II and FROSch: A Sustainable and Accessible (O)RAS Preconditioner},
-	author={Alexander Heinlein and Sebastian Kinnewig and Thomas Wick},
-	year={2024},
-	eprint={2410.22871},
-	archivePrefix={arXiv},
-	primaryClass={math.NA},
-	url={https://arxiv.org/abs/2410.22871},
+  title={Coupling deal.II and FROSch: A Sustainable and Accessible (O)RAS Preconditioner},
+  author={Alexander Heinlein and Sebastian Kinnewig and Thomas Wick},
+  year={2024},
+  eprint={2410.22871},
+  archivePrefix={arXiv},
+  primaryClass={math.NA},
+  url={https://arxiv.org/abs/2410.22871},
 }
 
 @misc{alves2024computationalstudyalgebraiccoarse,
-	title={A computational study of algebraic coarse spaces for two-level overlapping additive Schwarz preconditioners},
-	author={Filipe A. C. S. Alves and Alexander Heinlein and Hadi Hajibeygi},
-	year={2024},
-	eprint={2408.08187},
-	archivePrefix={arXiv},
-	primaryClass={math.NA},
-	url={https://arxiv.org/abs/2408.08187},
+  title={A computational study of algebraic coarse spaces for two-level overlapping additive Schwarz preconditioners},
+  author={Filipe A. C. S. Alves and Alexander Heinlein and Hadi Hajibeygi},
+  year={2024},
+  eprint={2408.08187},
+  archivePrefix={arXiv},
+  primaryClass={math.NA},
+  url={https://arxiv.org/abs/2408.08187},
 }
 
 @article{Oldfield2012,

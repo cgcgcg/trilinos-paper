@@ -352,15 +352,16 @@ to indicate best case performance gains from using GPUs.
 then detail more application-targeted solvers in ShyLU.
 We have added statements to make this distinction clear to the reader.  While the motivation for the development of solvers within ShyLU are
 application specific, they are reasonably general purpose. Basker, for example, could be used in the same context as KLU. It is a
-non-supernodal direct solver that relies on Block Triangular Form similar to KLU. It works even this structure is not present. However, it is not
+non-supernodal direct solver that relies on Block Triangular Form similar to KLU. It works even if this structure is not present. However, it is not
 the most efficient. Similarly, Tacho has been optimized for special class of problems. We have clarified this. }
 
 \Comment{Page 12, subsec 3.5, par 2 -- I am not sure of the definition of BTF here. Is it really block triangular or should it be block tridiagonal? Please check. At the end of the paragraph the acronym KLU is undefined.}
 
-\Response{This is Block Triangular Form. KLU (cite KLU https://dl.acm.org/doi/pdf/10.1145/1824801.1824814) also relies on BTF which was
-originally inspired Gilbert and Peierls algorithm (https://epubs.siam.org/doi/10.1137/0909058). KLU is a pun instead of the abbreviation. It
-comes from "Clark Kent" LU, as Gilbert Peierls algorithm is the LU algorithm that came before LU factorization became "Super"LU ! We leave
-this explanation out of the paper.  }
+\Response{This is Block Triangular Form. KLU \cite{Davis2010a} also relies on BTF which was
+originally inspired Gilbert and Peierls algorithm (J. R. Gilbert and T. Peierls. Sparse partial pivoting in time proportional to arithmetic operations. SIAM
+Journal on Scientific and Statistical Computing, 9(5):862–874, 1988). KLU is a pun instead of the abbreviation. It
+comes from "Clark Kent" LU, as Gilbert Peierls algorithm is the LU algorithm that came before LU factorization became "Super"LU! We leave
+this explanation out of the paper.}
 
 \Comment{Page 12, subsec 3.5, par 3 -- ``In addition... FROSch).'' So both Taco and Basker are node-level solvers only? This was not clear. Perhaps it could be made more explicit.}
 
