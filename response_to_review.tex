@@ -261,7 +261,13 @@ and is nowadays snapshotted into Trilinos for the pure convenience of dependency
 
 \Comment{Page 6, subsec 2.3 -- From the way Teuchos is described I would rather call it a ``programming interface''. The word ``tools'' convey the wrong impression, in my opinion.}
 
-\Response{\todo{respond}}
+\Response{We have deliberately chosen the term ``tools'', as Teuchos is precisely that:
+a collection of helper and utility components designed to simplify common programming tasks and to ensure a consistent coding style across Trilinos packages.
+Teuchos is not a programming interface in the conventional sense of defining an API boundary or abstraction layer for user interaction.
+Each Trilinos package defines its own interface, while Teuchos provides reusable building blocks for recurring tasks
+(such as memory management or access to BLAS/LAPACK routines)
+implemented in a consistent and unified manner throughout the code base.
+We have revised the description of Teuchos in the manuscript to clarify this distinction for the reader.}
 
 \Comment{Page 6, subsec 2.4 -- ``dense vectors''. In section 2.2 it is claimed that Kokkos kernels can provide ``batched dense linear algebra'' but is this section Tpetra supports only dense vectors not dense matrices. I have hard time reconciling these the ability of doing dense linear algebra at the node level with the apparent inability of doing the same at the distributed level. A clarification would help here.}
 

@@ -41,9 +41,12 @@ Kernels' capabilities can be found in~\cite{deveci2018multithreaded,wolf2017fast
 
 \subsection{Tools: Teuchos}
 
-Teuchos provides a suite of common tools for many Trilinos packages. These tools include memory management classes~\cite{bartlett2010} such as smart pointers and arrays, parameter lists for communicating hierarchical lists of parameters between library or application layers, templated wrappers for BLAS and LAPACK, XML parsers, MPI, and other utilities. They provide a unified ``look and feel'' across Trilinos packages and help avoid common programming mistakes.
-
-
+\revised{Teuchos provides a a collection of helper and utility components designed to simplify common programming tasks and to ensure a consistent coding style across Trilinos packages.
+These tools include memory management classes~\cite{bartlett2010} such as smart pointers and arrays,
+parameter lists for communicating hierarchical lists of parameters between library or application layers,
+templated wrappers for BLAS and LAPACK, XML parsers, MPI, and other supporting functionality.
+Teuchos thereby provides a unified ``look and feel'' across Trilinos packages and helps to avoid common programming mistakes.
+It offers rreusable building blocks for such recurring tasks implemented in a consistent and coherent manner to be used throughout the entire code base.}
 
 \subsection{Distributed-Memory Linear Algebra: Tpetra}\label{subsec:tpetra}
 Tpetra~\cite{Baker2012,hoemmen2015tpetra} provides the distributed-memory
