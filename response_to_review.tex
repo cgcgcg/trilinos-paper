@@ -85,15 +85,14 @@ Yes, Tpetra can be used with the linear solvers, but it's so much more than that
 \end{itemize}~%
 }
 
-\todo{Matthias: The reviewer (probably Nathaniel Morgan) explicitly asks for citing a specific code and paper and provides an outline on how he wants the Tpetra section to be rewritten. I do not agree with his assessment, yet we need to be aware that this is his only request for change and we are about to deny it.}
-
 \Response{
   Tpetra provides sparse distributed linear algebra.
   This does not mean that it can only be used in the context of the solution of linear systems.
   Trilinos is very well aware of Tpetra use cases besides solving linear systems:
-  for example, finite element discretizations provided by Intrepid2 and Panzer rely on Tpetra data structures.
+  for example, finite element discretizations provided by Intrepid2 and Panzer rely on Tpetra data structures or the work mentioned by the reviewer.
   Optimization packages such as ROL can leverage Tpetra objects.
-  In our view, ``linear algebra'' does not equate to ``solution of linear systems of equations''.
+  In our view, ``linear algebra'' is a field on its own and does not equate to ``solution of linear systems of equations''.
+  Therefore, Tpetra is part of Trilinos' ``Core'' product area, while all linear solvers are collected in their own product area.
 }
 
 \Comment{%
