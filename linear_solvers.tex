@@ -160,9 +160,11 @@ ShyLU also implements a distributed-memory linear solver based on the Schur comp
 \subsection{Physics Block Operators and Preconditioners: Teko}
 \label{sec:teko}
 
-The Teko library~\cite{Cyr2016a} provides interfaces for operators and preconditioners that are constructed from large physics-based sub-blocks.
-The sub-blocks are Thyra operators which are themselves often implemented using Tpetra matrices.
-\revised{Many multi-physics problems are conveniently described as a block-structured matrix which allows easy access to the underlying matrices describing single physics or coupling between different types of physics.}
+\revised{Many multi-physics problems are conveniently described by a block-structured matrix
+which allows easy access to the underlying matrices representing single-field physics or coupling between different physical fields.}
+The Teko library~\cite{Cyr2016a} provides interfaces for operators and preconditioners that are constructed from \revised{such} large physics-based sub-blocks.
+These sub-blocks are Thyra operators which are themselves often implemented using Tpetra matrices.
+
 Teko provides generic block preconditioning strategies such as $2\times2$ block-LU factorizations as well as block versions of Jacobi- and Gauss--Seidel-type methods for any number of blocks,
 as well as commonly used approximate inverse strategies for the Navier-Stokes equation
 such as SIMPLEC, LSC, and PCD preconditioners~\cite{CyrShadidEtAl2012_StabilizationScalableBlockPreconditioning}.
