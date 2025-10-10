@@ -396,7 +396,11 @@ We have clarified that in the description of the Amesos2 package.}
 
 \Comment{Page 13, subsec. 3.8 -- The description in this subsection sounds very nice indeed. I would very much like an example of the versatility of the interface. Also, why Anasazi is not included? Is the requirement of having a RHS such a constraint for the interface to exclude eigensolvers?}
 
-\Response{The Stratimikos package was designed with the solution of linear systems \(Ax=b\) in mind, allowing the to access a wide variety of linear solvers and preconditioners in a uniform fashion. While it is true that it could be extended to allow for eigenvalue problems \(Ax=\lambda x\), Anasazi is the only eigensolver package in Trilinos. On the other hand, Anasazi itself implements Thyra and Tpetra interfaces.}
+\Response{The Stratimikos package was designed with the solution of linear systems \(Ax=b\) in mind,
+allowing access to a wide variety of linear solvers and preconditioners in a uniform fashion.
+While it is true that it could be extended to allow for eigenvalue problems \(Ax=\lambda x\),
+Anasazi is the only eigensolver package in Trilinos.
+On the other hand, Anasazi itself implements Thyra and Tpetra interfaces.}
 
 \noindent\textbf{Section 4}
 
