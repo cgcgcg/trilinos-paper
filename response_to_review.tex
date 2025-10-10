@@ -107,6 +107,7 @@ Yes, Tpetra can be used with the linear solvers, but it's so much more than that
 \Response{
   The Trilinos team is in the process of removing the old Epetra package stack.
   The presentation of Trilinos provided capabilities and their documentation should become a lot less confusing once everything is built around a single sparse linear algebra package.
+  We are also actively working on improving the availability and correctness of our documentation and tutorial materials.
 }
 
 \Comment{%
@@ -122,8 +123,12 @@ There was no mention of compile times in the paper.
 }
 
 \Response{
-  The compile times of Trilinos depend on the number of packages and backends enabled.
-  Excessive compile times can occur, but are often caused by the underlying software stack.
+  Trilinos can take a long time to compile due to the large number of capabilities.
+  There are, however, multiple ways of achieving faster builds. 
+  Clearly, compile time depends on the number of packages and Kokkos backends and whether tests and examples are built.
+  Ensuring that only required features can significantly reduce build times.
+  The underlying software stack is also a major factor.
+  Compile times on certain GPU platforms can be quite long due this fact.
   Trilinos tests every PR in its continuous integration, including CPU and CUDA builds.
   The turnaround for building and testing Trilinos is generally on the order of one hour, but admittedly relies on \texttt{ccache}.
   We will consider documenting best practices for achieving fast builds on the Trilinos web page or GitHub wiki.
@@ -140,8 +145,8 @@ There was no mention of compile times in the paper.
 
 \Response{
   The Trilinos package provided by Anaconda is based on PyTrilinos which uses the old Epetra stack.
-  It will be archived in the fall and is therefore not mentioned in the paper.
-  There are currently no pip or anaconda packages for its successor PyTrilinos2, but we will consider providing them in the future.
+  It will be archived before the end of the year and is therefore not mentioned in the paper.
+  There are currently no pip or anaconda packages for its successor PyTrilinos2, but we will consider providing them.
 }
 
 %\Response{Respond to the reviewer's comment.
@@ -208,7 +213,7 @@ i.e., incorporated as fixed copies of their source code at a specific point in t
 
 \Response{We used ``high-level'' to distinguish from lower level algorithms from sparse linear algebra and linear solvers.
 We agree that this terminology lacks both rigor and generality.
-Since the distinction is not needed in this context, we removed both phrases, ``high-level'' and ``low-level''.}
+Since the distinction is not needed in this context, we removed both terms, ``high-level'' and ``low-level''.}
 
 \Comment{Page 5, par 1 and 2 – automatic differentiation is mentioned in both the ``Non-linear Solvers
 and Analysis Tools'' and ``Discretization Tools''. I would suggest that already at this stage an
@@ -245,7 +250,10 @@ The present manuscript introduces these new packages and their capabilities and 
 
 \Comment{Page 6, subsec 2.2, par 4 -- ``batched dense and sparse linear algebra'' The reference here is on linear solvers only. What about BLAS? Also later the text says ``..on these general capabilities''; it is unclear what capabilities it refers to.}
 
-\Response{\todo{respond}}
+\Response{
+  \todo{Figure out if there is a publication that covers batched BLAS specifically.}
+  We have replaced the term ``general capabilities'' with a listing of the types of algorithms that MueLu relies on.
+}
 
 \Comment{Page 5-6 -- A general comment is in order here. It is not clear how much of the Kokkos development is carried out under the Trilinos framework and how much is external/independent. Could you please make this as much as possible explicit?}
 
