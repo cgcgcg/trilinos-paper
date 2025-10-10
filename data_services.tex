@@ -72,11 +72,11 @@ also ``owns'' the degrees-of-freedom in the halo around its subdomain.
 
 The following are the primary linear algebra objects in Tpetra (all are subclasses of \code{DistObject}):
 \begin{itemize}
-\item \emph{(Multi)Vectors:} storage of dense vectors or collections of
+\item \emph{(Multi)Vectors} enable to storage of dense vectors or collections of
 vectors (multivectors) and associated BLAS-1 like kernels (e.g., dot
 products, norms, scaling, vector addition, pointwise vector
 multiplication) as well as tall skinny QR (TSQR) factorization for multivectors.
-\item \emph{CrsGraph} a sparse graph in compressed row storage (CRS)
+\item \emph{CrsGraph} implements a sparse graph in compressed row storage (CRS)
 format. Graphs also include import/export objects for use in
 halo/boundary exchanges associated with the graph.
 \item \emph{CrsMatrix} and \emph{BlockCrsMatrix} are sparse matrices in CRS and
