@@ -271,7 +271,11 @@ We have revised the description of Teuchos in the manuscript to clarify this dis
 \Comment{Page 6, subsec 2.4 -- ``dense vectors''. In section 2.2 it is claimed that Kokkos kernels can provide ``batched dense linear algebra'' but is this section Tpetra supports only dense vectors not dense matrices. I have hard time reconciling these the ability of doing dense linear algebra at the node level with the apparent inability of doing the same at the distributed level. A clarification would help here.}
 
 \Response{
-  A \texttt{MultiVector} is a collection of multiple vectors. It can therefore be used to represent a dense matrix.}
+  Tpetra focuses on distributed sparse linear algebra and dense vectors, but not on distributed dense matrices.
+  Dense matrix functionality, including batched dense linear algebra, is provided by Kokkos Kernels at the node (intra-rank) level.
+  Tpetra itself does not implement distributed dense matrices because such use cases are uncommon in large-scale PDE-based simulations that motivated Tpetra’s design.
+  We note though, that a \texttt{MultiVector} is a collection of multiple vectors. It can therefore be used to represent a (usually tall and skinny) dense matrix.
+  Given Tpetra's focus on sparse linear algebra, it is not recommended to represent large distributed dense matrices by Tpetra objects.}
 
 \Comment{Page 7, par 1 -- Could you give a simple example of ``Map data structure''.}
 
