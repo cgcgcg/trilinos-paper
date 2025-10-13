@@ -24,7 +24,7 @@ The implementations of Kokkos Kernels algorithms leverage the hierarchical paral
 
 The capabilities provided by Kokkos Kernels can be divided into four major categories:
 1. BLAS algorithms, 2. sparse linear algebra and preconditioners, 3. graph algorithms, and
-4. batched dense and sparse linear algebra~\cite{liegeois2023performance}. The main
+4. batched dense and sparse linear algebra~\cite{liegeois2023performance,10.1145/3431921}. The main
 points of integration of Kokkos Kernels in Trilinos are Tpetra for the dense and sparse
 linear algebra capabilities, Ifpack2 for the preconditioners and batched algorithms,
 and the multigrid package MueLu which relies directly and indirectly on \revised{BLAS and graph algorithms and specialized implementations} of graph coloring/coarsening~\cite{kelley2022parallel} and fused Jacobi-SpGEMM (generalized sparse matrix-matrix multiply) kernels.
