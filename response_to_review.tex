@@ -88,11 +88,12 @@ Yes, Tpetra can be used with the linear solvers, but it's so much more than that
 \Response{
   Tpetra provides sparse distributed linear algebra.
   This does not mean that it can only be used in the context of the solution of linear systems.
-  Trilinos is very well aware of Tpetra use cases besides solving linear systems:
-  for example, finite element discretizations provided by Intrepid2 and Panzer rely on Tpetra data structures or the work mentioned by the reviewer.
+  For example, finite element discretizations provided by Intrepid2 and Panzer rely on Tpetra data structures or the work mentioned by the reviewer.
   Optimization packages such as ROL can leverage Tpetra objects.
   In our view, ``linear algebra'' is a field on its own and does not equate to ``solution of linear systems of equations''.
   Therefore, Tpetra is part of Trilinos' ``Core'' product area, while all linear solvers are collected in their own product area.
+  We have added an additional statement to further stress how crucial Tpetra is for Trilinos:
+  \Changes{Due to the fundamental nature of MPI distributed data structures, the majority of Trilinos packages depend directly or indirectly on Tpetra.}
 }
 
 \Comment{%
@@ -126,7 +127,7 @@ There was no mention of compile times in the paper.
   Trilinos can take a long time to compile due to the large number of capabilities.
   There are, however, multiple ways of achieving faster builds. 
   Clearly, compile time depends on the number of packages and Kokkos backends and whether tests and examples are built.
-  Ensuring that only required features can significantly reduce build times.
+  Ensuring that only required features are enabled can significantly reduce build times.
   The underlying software stack is also a major factor.
   Compile times on certain GPU platforms can be quite long due this fact.
   Trilinos tests every PR in its continuous integration, including CPU and CUDA builds.
