@@ -180,22 +180,22 @@ This could be also the result of a manuscript which has probably seen many autho
 Despite the fact that the language level is fairly uniform, there are subsections that are clearly
 more effective in delivering their content than others (see detailed comments).}
 
-\Response{We are aware that parts of the paper can leave the impression of being very terse and might require some background knowledge on the underlying mathematical methods.
-Given the variety of algorithms included in Trilinos, it might be too big of a task to describe all algorithms in full detail in a single manuscript, especially given page limits of scientific journals.
-As the reviewer observes, the manuscript already exceeds 30 pages.
-The main goal of this manuscript is to provide an update on recent changes to the overall Trilinos project,
-in particular its adoption of the Kokkos programming model to enable performance portability across hardware architectures.
-To maintain a finite scope, the reader is referred to the packages' documentation or individual publications for details on concrete algorithms in specific software packages.}
+\Response{
+  We agree this is a valid point: parts of the paper can leave the impression of being terse and might require background knowledge on the underlying mathematical methods, even though we aimed to keep the text accessible to a broad audience. Given the variety of algorithms included in Trilinos, it might be too big of a task to describe all algorithms in full detail in a single manuscript, especially given page limits of scientific journals. As the reviewer observes, the manuscript already exceeds 30 pages. The main goal of this manuscript is to provide an update on recent changes to the overall Trilinos project, in particular its adoption of the Kokkos programming model to enable performance portability across hardware architectures. Some packages tackle well-known concepts, whereas others implement more specialized algorithms that are less broadly familiar, making them harder to describe comprehensively within the space available. To maintain a finite scope, the reader is referred to the packages' documentation or individual publications for details on concrete algorithms in specific software packages, and we have aimed to cite sufficient references so readers can explore each topic more deeply. Within the constraints of this paper, we will incorporate the reviewer's specific comments wherever feasible.
+}
 
 
-\Comment{Overall, I believe the manuscript is definitely worth considering for publication as long as the
-detailed comments listed below are taken into consideration.}
+\Comment{Overall, I believe the manuscript is definitely worth considering for publication as long as the detailed comments listed below are taken into consideration.}
 
 \noindent\textbf{Section 1}
 \Comment{Page 3, subsec 1.1, paragraph 3 – ``... execution and memory spaces...'' Please provide an
 explicit explanation of is intended with the spaces above.}
 
-\Response{We have added short explanations for the purpose of execution and memory spaces.}
+\Response{We have added short explanations for the purpose of execution and memory spaces. We now write:}
+
+\Changes{
+  In particular, the use of \texttt{execution spaces} (where does code run) and \texttt{memory spaces} (where does data reside) as parameters of data structures and algorithms is a common thread throughout Trilinos.
+}
 
 \Comment{Page 3, subsec 1.2, par. 2 – Please define explicitly the meaning of the term ``snapshotting''}
 
@@ -207,13 +207,11 @@ i.e., incorporated as fixed copies of their source code at a specific point in t
 \Comment{Page 5, par 1 – What is exactly intended with ``high-level'' algorithms? Is there something like
 “low-level” algorithms?}
 
-\Response{We used ``high-level'' to distinguish from lower level algorithms from sparse linear algebra and linear solvers.
-We agree that this terminology lacks both rigor and generality.
-Since the distinction is not needed in this context, we removed both terms, ``high-level'' and ``low-level''.}
+\Response{
+  We used ``high-level'' to describe algorithms that build on top of or use basic algorithms and kernels, which we referred to as ``low-level''. However, we never precisely defined this distinction, and we agree that the terminology lacks rigor and generality. Because the distinction is unnecessary here, we removed both ``high-level'' and ``low-level''.
+}
 
-\Comment{Page 5, par 1 and 2 – automatic differentiation is mentioned in both the ``Non-linear Solvers
-and Analysis Tools'' and ``Discretization Tools''. I would suggest that already at this stage an
-explanation of the difference between these AD is provided}
+\Comment{Page 5, par 1 and 2 – automatic differentiation is mentioned in both the ``Non-linear Solvers and Analysis Tools'' and ``Discretization Tools''. I would suggest that already at this stage an explanation of the difference between these AD is provided}
 
 \Response{AD plays an important role in many aspects of computational science.
 Thus, it is used in different packages of Trilinos.
