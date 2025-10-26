@@ -46,7 +46,6 @@
 \usepackage{xcite}
 \externalcitedocument{main}
 
-
 %% redefine thanking if necessary
 %\renewcommand{\Thanks}{The authors would like to thank the reviewer ...}
 
@@ -87,6 +86,8 @@ Yes, Tpetra can be used with the linear solvers, but it's so much more than that
 
 \Response{
   Tpetra provides sparse distributed linear algebra.
+  Its parallel data structures---distributed matrices and vectors---are quintessential linear algebra objects, even if Tpetra also offers some functionality that extends beyond strict linear algebra.
+  Overall, it still primarily covers distributed linear algebra, whereas, for instance, wrappers to distributed-memory communicators live in Teuchos.
   This does not mean that it can only be used in the context of the solution of linear systems.
   For example, finite element discretizations provided by Intrepid2 and Panzer rely on Tpetra data structures or the work mentioned by the reviewer.
   Optimization packages such as ROL can leverage Tpetra objects.
@@ -95,6 +96,10 @@ Yes, Tpetra can be used with the linear solvers, but it's so much more than that
   We have added an additional statement to further stress how crucial Tpetra is for Trilinos:
 }
 \Changes{Due to the fundamental nature of MPI distributed data structures, the majority of Trilinos packages depend directly or indirectly on Tpetra.}
+
+\todo{
+  AH: We may want to consider adding this reference. Although I generally dislike when reviewers ask for citations to their own work, if the reference is genuinely relevant, we should probably include it. I think it would be Ok to add this reference.
+}
 
 \Comment{%
 \begin{itemize}%
@@ -106,9 +111,9 @@ Yes, Tpetra can be used with the linear solvers, but it's so much more than that
 }%
 
 \Response{
-  The Trilinos team is in the process of removing the old Epetra package stack.
-  The presentation of Trilinos provided capabilities and their documentation should become a lot less confusing once everything is built around a single sparse linear algebra package.
-  We are also actively working on improving the availability and correctness of our documentation and tutorial materials.
+  We thank the reviewer for this comment, as well as the ones below; they align closely with feedback from the broader Trilinos community.
+  The Trilinos team is in the process of removing the old Epetra package stack, and the presentation of Trilinos capabilities and their documentation should become much clearer once everything is built around a single sparse linear algebra package.
+  We are also actively working on improving the availability and accuracy of our documentation and tutorial materials.
 }
 
 \Comment{%
@@ -124,15 +129,7 @@ There was no mention of compile times in the paper.
 }
 
 \Response{
-  Trilinos can take a long time to compile due to the large number of capabilities.
-  There are, however, multiple ways of achieving faster builds. 
-  Clearly, compile time depends on the number of packages and Kokkos backends and whether tests and examples are built.
-  Ensuring that only required features are enabled can significantly reduce build times.
-  The underlying software stack is also a major factor.
-  Compile times on certain GPU platforms can be quite long due this fact.
-  Trilinos tests every PR in its continuous integration, including CPU and CUDA builds.
-  The turnaround for building and testing Trilinos is generally on the order of one hour, but admittedly relies on \texttt{ccache}.
-  We will consider documenting best practices for achieving fast builds on the Trilinos web page or GitHub wiki.
+  Similar to the previous comment, this feedback echoes what we frequently hear from the Trilinos community. Trilinos can take a long time to compile because of the breadth of capabilities it offers, though several approaches can accelerate builds. Compile time depends on the selected packages, Kokkos backends, and whether tests or examples are enabled, so tailoring a configuration to the needed features often shortens builds considerably. The underlying software stack is another major factor, and GPU platforms in particular tend to exhibit long compile times. Trilinos runs CPU and CUDA builds for every PR in CI, with turnaround typically about an hour thanks to \texttt{ccache}. We will consider documenting best practices for fast builds on the Trilinos web page or GitHub wiki.
 }
 
 \Comment{
@@ -145,9 +142,7 @@ There was no mention of compile times in the paper.
 }
 
 \Response{
-  The Trilinos package provided by Anaconda is based on PyTrilinos which uses the old Epetra stack.
-  It will be archived before the end of the year and is therefore not mentioned in the paper.
-  There are currently no pip or anaconda packages for its successor PyTrilinos2, but we will consider providing them.
+  We agree with the reviewer that robust Python support and straightforward installation via \texttt{pip} or Anaconda would enhance Trilinos' usability. The current Anaconda package is based on PyTrilinos and the legacy Epetra stack; it will be archived before the end of the year and is therefore not mentioned in the paper. There are presently no \texttt{pip} or Anaconda packages for the PyTrilinos2 stack, but we are investigating how to provide up-to-date distributions aligned with current Trilinos releases.
 }
 
 %\Response{Respond to the reviewer's comment.
