@@ -245,14 +245,15 @@ The present manuscript introduces these new packages and their capabilities and 
 \Comment{Page 6, subsec 2.2, par 4 -- ``batched dense and sparse linear algebra'' The reference here is on linear solvers only. What about BLAS? Also later the text says ``..on these general capabilities''; it is unclear what capabilities it refers to.}
 
 \Response{
-  There is no publication that covers the batched BLAS routines in KokkosKernels.
-  We have added reference~\cite{10.1145/3431921} that covers batched BLAS generally.
-  We have replaced the term ``general capabilities'' with a listing of the types of algorithms that MueLu relies on.
+  Currently, there no publication focusing specifically on the batched BLAS routines in KokkosKernels, so we now cite reference~\cite{10.1145/3431921} as a comprehensive overview of batched BLAS techniques.
+  We also replaced the phrase ``general capabilities'' with an explicit list of the algorithm classes that MueLu relies on.
 }
 
 \Comment{Page 5-6 -- A general comment is in order here. It is not clear how much of the Kokkos development is carried out under the Trilinos framework and how much is external/independent. Could you please make this as much as possible explicit?}
 
-\Response{Kokkos and its subprojects are nowadays developed independently and outside of Trilinos. For convenience, Kokkos releases are snapshotted into Trilinos. We have added a sentence to clarify this:}
+\Response{
+  Thank you for pointing this out. We should have stated more clearly that Kokkos and its subprojects are now developed independently of Trilinos. For convenience, Kokkos releases are periodically snapshotted into Trilinos. We have added a sentence to make this explicit:
+}
 
 \Changes{While the development of Kokkos Core has originated as a package of Trilinos, Kokkos has become an independent project in 2015
 and is nowadays snapshotted into Trilinos for the pure convenience of dependency management.}
