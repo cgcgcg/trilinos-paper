@@ -65,7 +65,14 @@ which defines which elements are present on which ranks.
 Here ``element'' could be a row or column of a sparse matrix or an entry of a vector.
 Global indices number elements across an entire distributed object, while local indices number elements only within a rank.
 \revised{The \code{Map} encodes the relation between local indices and global indices.}
+\revised{An illustration for a vector, that is distributed to two MPI processes, is given in Figure~\ref{fig:Map}.}
 Since memory capacity limits the sizes of local objects, local indices can be safely represented with a more compact type than global indices (e.g., 32-bit \code{int} instead of 64-bit \code{long}).
+
+\begin{figure}
+\input{visualize_map.tex}
+\caption{Illustration of a \code{Tpetra::Map} for an exemplary vector~$\mathbf{v}\in\mathbb{R}^5$ distributed to two processes~$p\in\{0,1\}$: Entries~$v$, $x$ and~$z$ are stored on process~$0$, entries~$w$ and~$y$ are stored on process~$1$. Local-to-global mapping of indices is given by~$\mathbf{M}_p$, where the $i$th element of~$\mathbf{M}_p$ denotes the unique global index corresponding to the local index~$i$ on process~$p$.}
+\label{fig:Map}
+\end{figure}
 
 \code{DistObject} is Tpetra's abstract base class for general distributed objects.
 Subclasses define how to pack elements into a buffer for sending with MPI, and how to unpack received elements.

@@ -1,0 +1,86 @@
+% !TEX root = main.tex
+
+\begin{tikzpicture}
+
+\definecolor{colUniBwOr}{rgb}{0.929,0.431,0.0} % Unibw Orange
+\definecolor{colUniBwGr}{RGB}{113,112,114} % Unibw Gray
+\definecolor{procZero}{named}{colUniBwOr}
+\definecolor{procOne}{named}{colUniBwGr}
+
+\providecommand{\mapentry}[2]{\colorbox{#2!30}{\makebox[1em][c]#1}}
+
+\def\textPos{1.2}
+\def\mapPos{2.4}
+\def\procPos{4}
+
+\node at (0,0) {
+$
+\mathbf{v} =
+\begin{bmatrix}
+\mapentry{v}{procZero}\\
+\mapentry{w}{procOne}\\
+\mapentry{x}{procZero}\\
+\mapentry{y}{procOne}\\
+\mapentry{z}{procZero}
+\end{bmatrix}
+$
+};
+
+\draw [very thick, -{stealth}] (0.8,0.2) -- (2.1,1);
+\draw [very thick, -{stealth}] (0.8,-0.2) -- (2.1,-1);
+\draw [thick, dashed] (1.5,0) -- (8,0);
+
+\begin{scope}[shift={(3,1)}]
+\node at (0,0) {
+$
+\mathbf{v}_0 =
+\begin{bmatrix}
+\mapentry{v}{procZero}\\
+\mapentry{x}{procZero}\\
+\mapentry{z}{procZero}
+\end{bmatrix}
+$
+};
+
+\node at (\textPos,0) {with};
+\node at (\mapPos,0) {
+$
+\mathbf{M}_0 =
+\begin{bmatrix}
+0\\
+2\\
+4
+\end{bmatrix}
+$
+};
+\node at (\procPos,0) {on process~$0$};
+
+\end{scope}
+
+\begin{scope}[shift={(3,-1)}]
+\node at (0,0) {
+$
+\mathbf{v}_1 =
+\begin{bmatrix}
+\mapentry{w}{procOne}\\
+\mapentry{y}{procOne}
+\end{bmatrix}
+$
+};
+
+\node at (\textPos,0) {with};
+\node at (\mapPos,0) {
+$
+\mathbf{M}_1 =
+\begin{bmatrix}
+1\\
+2
+\end{bmatrix}
+$
+};
+\node at (\procPos,0) {on process~$1$};
+
+\end{scope}
+
+
+\end{tikzpicture}
