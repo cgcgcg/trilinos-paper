@@ -428,7 +428,7 @@ On the other hand, Anasazi itself implements Thyra and Tpetra interfaces.}
 
 \Comment{Page 14, subsec 4.2, par 1 -- ``any computational hardware'' A bit too eager of a statement. Does it include neuromorphic architectures of FPGAS or Quantum accelerators? I doubt it. Just tone it down. Also later ``many-core systems'' is a term that refers already to accelerators as opposed to multi-core systems. Please correct.}
 
-\Response{We have reformulated to a more concise formulation. It reads:}
+\Response{We agree that the original statement was a bit too strong, so we reformulated it as follows:}
 
 \Changes{Its programming interface supports modern computational hardware, including heterogeneous multi-core systems.}
 
@@ -447,8 +447,7 @@ minimize risk measures such as conditional value at risk.}
 
 \Comment{Page 15, subsec 4.2, 3rd bullet point -- ``data science and machine learning'' Perhaps a reference here? LASSO? Else?}
 
-\Response{We added reference~\cite{fuhg2024extreme},
-where the authors combine neural network-based data-driven constitutive modeling with sparse regression.
+\Response{As an example, we added reference~\cite{fuhg2024extreme}, where the authors combine neural network-based data-driven constitutive modeling with sparse regression.
 }
 
 \Comment{Page 15, subsec 4.2, last bullet point -- I find the description of this package based on the assumption that the only viable discretization is based on finite elements. What about finite differences? Perhaps this should be exemplified.}
@@ -479,7 +478,9 @@ scope to finite element methods.}
 
 \Comment{Page 16, subsec 4.5, 1st bullet point -- The text here sounds way too high-level and vague. It reads to me as there is very little practical information.}
 
-\Response{We have revised the text to include more specific information. However, we prefer not to dedicate excessive space to the description of the Piro package.}
+\Response{
+  We have revised the text to include more specific information, but we prefer to keep the description of the Piro package concise.
+}
 
 \Comment{Page 17, subsec 4.5, 1st bullet point -- Clarify what LOCA does and what Piro does. As it is I find it quite confusing. As a general comment, I also do not understand why interfaces and solvers have to be packed in separate packages. It increases the confusion.}
 
@@ -534,10 +535,15 @@ FROSch, ROL), showing performance on various architectures, scaling trends, and
 comparing to earlier versions of Trilinos would enrich the manuscript
 significantly.}
 
-\Response{We agree that a discussion of performance results could make the manuscript more interesting for readers with an interest in particular algorithms of packages of Trilinos.
+\Response{
+  We agree that a discussion of performance results could make the manuscript more interesting for readers with an interest in particular algorithms of packages of Trilinos.
   However, we do not think that this is feasible as it would significantly increase the scope.
   A lot more algorithmic detail would be required in order to provide a reasonable explanation of what platforms and scaling experiments are being run.
   Moreover, selecting a subset of problems and packages to illustrate a representative snapshot of ``performance of Trilinos'' seems extremely daunting given the breadth of algorithms.
+  Additionally, there is currently no consistent set of benchmark tests providing comparable performance results across the various solvers.
+  A ``fair'' comparison between different solvers, spanning distinct implementations and even different classes of algorithms, would therefore be a difficult endeavor and remains beyond the scope of this paper.
+  We agree that assembling such a comparison would make for an interesting dedicated publication.
+  Given the current length of the manuscript, we prefer to omit this material here and hope that the referee will accept this decision.
   The current manuscript is already well beyond the usual page limit of the journal.
 }
 
@@ -547,15 +553,13 @@ configurations, showing supported platforms (e.g., CUDA, ROCm, SYCL). Clarify
 how to contribute performance-tuned external Kokkos-based packages into
 Trilinos.}
 
-\Response{We have refrained from detailing build/test matrix configurations, since they are subject to continuous change,
-in particular adding new hardware architectures when they become available.
-An always up-to-date overview of build/test configurations can be found in Trilinos' testing pipelines as part of the Trilinos GitHub repository.
+\Response{
+  We considered including a table of build/test matrix configurations, but ultimately refrained because they are subject to continuous change, especially when new hardware architectures become available.
+  Instead, an always up-to-date overview of build/test configurations can be found in Trilinos' testing pipelines as part of the Trilinos GitHub repository.
 \todo{Point to the respective location in the Trilinos repository.}}
 
 \Response{
-  There is no pre-defined process for including external software into Trilinos.
-  Rather, we invite potential contributors to contact the Trilinos product owners to discuss.
-  We have added the following statement:
+  There is no pre-defined process for including external software into Trilinos. Rather, we invite potential contributors to contact the Trilinos product owners to discuss. To clarify this, we have added the following statement:
 }
 \Changes{Questions regarding the inclusion of new packages should be discussed with the Trilinos leadership team.}
 
@@ -565,14 +569,9 @@ on at least two architectures (e.g., AMD+ROCm vs. NVIDIA+CUDA), to validate
 performance portability claims.}
 
 \Response{
-  Please see our previous response.
-  Showing performance results for FROSch, MueLu and ROL might be of interest to some readers. Others might want to see results illustrating Ifpack2, Kokkos Kernels, Amesos2, Teko, Anasazi, NOX, Intrepid2, Panzer or Sacado.
-  Selecting an appropriate subset of capabilities that truly represents the breadth of capabilities of Trilinos is very difficult.
+  Please see our previous response. Showing performance results for FROSch, MueLu and ROL might be of interest to some readers. Others might want to see results illustrating Ifpack2, Kokkos Kernels, Amesos2, Teko, Anasazi, NOX, Intrepid2, Panzer or Sacado. Selecting an appropriate subset of capabilities that truly represents the breadth of capabilities of Trilinos is very difficult. We regret to reiterate that we must refrain from adding specific results, as such a discussion remains outside the scope of this paper. We agree that it would be a valuable topic for a dedicated discussion elsewhere.
 }
 
-\Comment{The manuscript is a high-quality overview of a critical scientific
-infrastructure. With the addition of quantitative benchmarks and minor editorial
-improvements, it will serve as a lasting reference for both developers and
-end-users in the HPC community.}
+\Comment{The manuscript is a high-quality overview of a critical scientific infrastructure. With the addition of quantitative benchmarks and minor editorial improvements, it will serve as a lasting reference for both developers and end-users in the HPC community.}
 
 \end{document}
