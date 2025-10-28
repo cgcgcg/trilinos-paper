@@ -299,9 +299,9 @@ and is nowadays snapshotted into Trilinos for the pure convenience of dependency
 
 \Comment{Page 7, subsec 2.5, 1st bullet point -- ``... performance can be difficult.'' I find this paragraph and especially the sentence ending the words above confusing. What I understand is that Thyra and Tpetra have overlapping scopes. Tpetra targets distributed linear algebra but it looks it also provides methods like AXPY. What is then the distinction with Thyra?}
 
-\Response{Thyra provides abstract interfaces. Tpetra is one of the possible concrete implementations of these interfaces.}
+\Response{Thyra provides abstract interfaces. Tpetra is one of the possible concrete implementations of these interfaces. We have modified the paragraph as follows:}
 
-\todo{Should we mention Tpetra as a concrete implementation of this concept in the manuscript (similar to Stratimikos in the next bullet point)? \textbf{AH:} I agree with the reviewer that this sentence is not very clear. I thought about this, but I do not have a good concrete suggestion. Does one of you have a suggestion? I would suggest to slightly change this is in the paper.}
+\Changes{The abstractions hide concrete linear algebra and solver implementations so that algorithm development is separated from the implementation of the underlying kernels, allowing the same code to be written once and reused across many application codes. For example, one could write a Krylov solver and, without modifications to computational kernels that are hidden behind the abstraction layer, use it with multiple concrete linear algebra implementations such as Tpetra in Trilinos or the vector/matrix objects in PETSc.}
 
 \Comment{Page 8, line 1 -- ``factories''. No idea what it is intended with this term.}
 
@@ -407,9 +407,9 @@ Trilinos package ShyLU. We have clarified that in the description of the Amesos2
 allowing access to a wide variety of linear solvers and preconditioners in a uniform fashion.
 While it is true that it could be extended to allow for eigenvalue problems \(Ax=\lambda x\),
 Anasazi is the only eigensolver package in Trilinos.
-On the other hand, Anasazi itself implements Thyra and Tpetra interfaces.}
+On the other hand, Anasazi itself implements Thyra and Tpetra interfaces. We have added the following statements to the description of Stratimikos:}
 
-\todo{Could we incorporate this into the paper? Could we put a reference to Anasazi in that section?}
+\Changes{Stratimikos does not support eigenvalue problems. Anasazi has, however, a Thyra interface and can therefore be used with different linear algebra backends.}
 
 \noindent\textbf{Section 4}
 
@@ -546,8 +546,7 @@ Trilinos.}
 
 \Response{
   We considered including a table of build/test matrix configurations, but ultimately refrained because they are subject to continuous change, especially when new hardware architectures become available.
-  Instead, an always up-to-date overview of build/test configurations can be found in Trilinos' testing pipelines as part of the Trilinos GitHub repository.
-\todo{Point to the respective location in the Trilinos repository. Also mention this in the manuscript.}}
+  Instead, an always up-to-date overview of build/test configurations can be found in Trilinos' testing pipelines as part of the Trilinos GitHub repository at \url{https://github.com/trilinos/Trilinos/blob/master/.github/workflows/AT2.yml}.
 
 \Response{
   There is no pre-defined process for including external software into Trilinos. Rather, we invite potential contributors to contact the Trilinos product owners to discuss. To clarify this, we have added the following statement:

@@ -193,3 +193,5 @@ It requires that the matrix, right-hand side, and the solution vectors all suppo
 Thyra also provides wrappers for Tpetra linear algebra.
 Users can specify solver and preconditioner parameters via a \code{Teuchos::ParameterList}, which can be easily populated from an XML file.
 Moreover, the package allows for the easy addition of new solver and preconditioner factories via adapters, with examples available in the \texttt{packages/stratimikos/adapters} directory.
+\revised{Stratimikos does not support eigenvalue problems.
+Anasazi has, however, a Thyra interface and can therefore be used with different linear algebra backends.}
