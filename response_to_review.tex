@@ -86,7 +86,7 @@ Yes, Tpetra can be used with the linear solvers, but it's so much more than that
 
 \Response{
   Tpetra provides sparse distributed linear algebra.
-  Its parallel data structures---distributed matrices and vectors---are quintessential linear algebra objects, even if Tpetra also offers some functionality that extends beyond strict linear algebra.
+  Its parallel data structures --- distributed matrices and vectors --- are quintessential linear algebra objects, even if Tpetra also offers some functionality that extends beyond strict linear algebra.
   Overall, it still primarily covers distributed linear algebra, whereas, for instance, wrappers to distributed-memory communicators live in Teuchos.
   This does not mean that it can only be used in the context of the solution of linear systems.
   For example, finite element discretizations provided by Intrepid2 and Panzer rely on Tpetra data structures or the work mentioned by the reviewer.
@@ -96,10 +96,6 @@ Yes, Tpetra can be used with the linear solvers, but it's so much more than that
   We have added an additional statement to further stress how crucial Tpetra is for Trilinos:
 }
 \Changes{Due to the fundamental nature of MPI distributed data structures, the majority of Trilinos packages depend directly or indirectly on Tpetra.}
-
-\todo{
-  AH: We may want to consider adding this reference. Although I generally dislike when reviewers ask for citations to their own work, if the reference is genuinely relevant, we should probably include it. I think it would be Ok to add this reference.
-}
 
 \Comment{%
 \begin{itemize}%
@@ -305,21 +301,17 @@ and is nowadays snapshotted into Trilinos for the pure convenience of dependency
 
 \Response{Thyra provides abstract interfaces. Tpetra is one of the possible concrete implementations of these interfaces.}
 
-\todo{Should we mention Tpetra as a concorete implementation of this concept in the manuscript (similar to Stratimikos in the next bullet point)? \textbf{AH:} I agree with the reviewer that this sentence is not very clear. I thought about this, but I do not have a good concrete suggestion. Does one of you have a suggestion? I would suggest to slightly change this is in the paper.}
+\todo{Should we mention Tpetra as a concrete implementation of this concept in the manuscript (similar to Stratimikos in the next bullet point)? \textbf{AH:} I agree with the reviewer that this sentence is not very clear. I thought about this, but I do not have a good concrete suggestion. Does one of you have a suggestion? I would suggest to slightly change this is in the paper.}
 
 \Comment{Page 8, line 1 -- ``factories''. No idea what it is intended with this term.}
 
 \Response{The following sentence describes what a factory is.}
 
-\todo{Perhaps, I missed this. But where is the term ``factory'' defined/explained?}
-
 \Comment{Page 8, par 1 -- ``... with the ANAs ... given in section 3.8'' Despite the text gives an example, I feel lost and find the example more confusing than illuminating.}
 
 \Response{We have rephrased this sentence to clarify, that Stratimikos is a concrete implementation of this concept inside Trilinos:}
 
-\Changes{[...] The solver interfaces allow one to wrap any concrete linear solver or preconditioner for use with the ANAs. As a concrete instantiation of this concept, Trilinos implements the Stratimikos package that wraps all of the Trilinos preconditioners and linear solvers in Thyra abstractions. [...]}
-
-\todo{Why ``instantiation''?}
+\Changes{[...] The solver interfaces allow one to wrap any concrete linear solver or preconditioner for use with the ANAs. As a concrete implementation of this concept, the Stratimikos package wraps all of the Trilinos preconditioners and linear solvers in Thyra abstractions. [...]}
 
 \Comment{Page 8, subsec 2.6, par 3 -- ``Zoltan2 ... (via Kokkos)''. Another source of confusion. I understood that what is described here is Tpetra’s goal}
 
@@ -555,7 +547,7 @@ Trilinos.}
 \Response{
   We considered including a table of build/test matrix configurations, but ultimately refrained because they are subject to continuous change, especially when new hardware architectures become available.
   Instead, an always up-to-date overview of build/test configurations can be found in Trilinos' testing pipelines as part of the Trilinos GitHub repository.
-\todo{Point to the respective location in the Trilinos repository.}}
+\todo{Point to the respective location in the Trilinos repository. Also mention this in the manuscript.}}
 
 \Response{
   There is no pre-defined process for including external software into Trilinos. Rather, we invite potential contributors to contact the Trilinos product owners to discuss. To clarify this, we have added the following statement:
