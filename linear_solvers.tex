@@ -11,12 +11,12 @@ Trilinos offers many linear solver capabilities: dense and sparse direct solvers
 
 \subsection{Iterative Linear Solvers and Krylov Methods: Belos}
 
-Belos~\cite{Bavier2012a} provides next-generation iterative linear solvers and a powerful 
-framework \revised{to develop solvers} for linear systems and least-squares problems. This 
-framework \revised{is powerful because it} provides several \revised{algorithmic} abstractions 
-that facilitate code reuse and extensibility. \revised{These abstractions are at every level 
-of the iterative solver hierarchy, from the foundational linear algebra to the solver managers 
-that embody the overall solution strategy, facilitating flexible solver development.} 
+Belos~\cite{Bavier2012a} provides next-generation iterative linear solvers and a powerful
+framework \revised{to develop solvers} for linear systems and least-squares problems. This
+framework \revised{is powerful because it} provides several \revised{algorithmic} abstractions
+that facilitate code reuse and extensibility. \revised{These abstractions are at every level
+of the iterative solver hierarchy, from the foundational linear algebra to the solver managers
+that embody the overall solution strategy, facilitating flexible solver development.}
 
 Belos \revised{fundamentally} decouples the algorithms from the implementation of the underlying linear algebra object using \revised{abstract traits classes that prescribe the required matrix and vector operations. Adapters are necessary to concrete linear algebra implementations, which are} provided for Tpetra and Thyra. Users can also implement their own interfaces to leverage existing matrix and vector representations. \revised{Next}, there are abstractions to orthogonalization to ease the integration of application or architecture-specific orthogonalization methods. Implementations of iterated classical Gram-Schmidt, DGKS-corrected (Daniel, Gragg, Kaufman, and Stewart-corrected) classical Gram-Schmidt, and iterated modified Gram-Schmidt algorithms are provided.  Finally, solver managers encapsulate the strategy for solving a linear system or least-squares problem using abstract interfaces to iteration kernels.  As a result, the algorithms developed using Belos abstractions can be relatively agnostic to data layout in memory or distributed over processors and parallel matrix/vector operations.
 

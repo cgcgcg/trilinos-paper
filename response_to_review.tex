@@ -213,12 +213,9 @@ i.e., incorporated as fixed copies of their source code at a specific point in t
 
 \Comment{Page 5, par 1 and 2 – automatic differentiation is mentioned in both the ``Non-linear Solvers and Analysis Tools'' and ``Discretization Tools''. I would suggest that already at this stage an explanation of the difference between these AD is provided}
 
-\Response{AD plays an important role in many aspects of computational science.
-Thus, it is used in different packages of Trilinos.
-Section 4.3 introduces Sacado, Trilinos' AD framework, which is formally part of ``Nonlinear solvers and analysis tools''.
-The discretization schemes provided by Trilinos use AD capabilities, which is why AD was mentioned in this paragraph as well.
-We have rephrased the paragraph to make it clearer that these are not different types of AD,
-but that AD used by discretization schemes refers back to the AD framework of ``Nonlinear solvers and analysis tools''.}
+\Response{
+  AD plays an important role in many aspects of computational science, so several Trilinos packages rely on it. Section 4.3 introduces Sacado, Trilinos' AD framework within ``Nonlinear solvers and analysis tools''. The discretization packages make use of Sacado as well, which is why AD is mentioned in that paragraph. We have rephrased the text to clarify that the AD used by the discretization schemes is the same framework described in ``Nonlinear solvers and analysis tools'', rather than a separate variant.
+}
 
 \Comment{Page 5, subsec 1.3 – I would strongly recommend to give in this section an overview of how
 much has changed from the 2005 paper and current one. Implicitly, such a overview would give the
@@ -264,13 +261,9 @@ and is nowadays snapshotted into Trilinos for the pure convenience of dependency
 
 \Comment{Page 6, subsec 2.3 -- From the way Teuchos is described I would rather call it a ``programming interface''. The word ``tools'' convey the wrong impression, in my opinion.}
 
-\Response{We have deliberately chosen the term ``tools'', as Teuchos is precisely that:
-a collection of helper and utility components designed to simplify common programming tasks and to ensure a consistent coding style across Trilinos packages.
-Teuchos is not a programming interface in the conventional sense of defining an API boundary or abstraction layer for user interaction.
-Each Trilinos package defines its own interface, while Teuchos provides reusable building blocks for recurring tasks
-(such as memory management or access to BLAS/LAPACK routines)
-implemented in a consistent and unified manner throughout the code base.
-We have revised the description of Teuchos in the manuscript to clarify this distinction for the reader.}
+\Response{
+  We have deliberately chosen the term ``tools'', as Teuchos is precisely that: a collection of helper and utility components designed to simplify common programming tasks and to ensure a consistent coding style across Trilinos packages. Teuchos is not a programming interface in the conventional sense of defining an API boundary or abstraction layer for user interaction. Each Trilinos package defines its own interface, while Teuchos provides reusable building blocks for recurring tasks (such as memory management or access to BLAS/LAPACK routines) implemented in a consistent and unified manner throughout the code base. We have revised the whole description of Teuchos in the manuscript to clarify this distinction for the reader.
+}
 
 \Comment{Page 6, subsec 2.4 -- ``dense vectors''. In section 2.2 it is claimed that Kokkos kernels can provide ``batched dense linear algebra'' but is this section Tpetra supports only dense vectors not dense matrices. I have hard time reconciling these the ability of doing dense linear algebra at the node level with the apparent inability of doing the same at the distributed level. A clarification would help here.}
 
@@ -283,32 +276,43 @@ We have revised the description of Teuchos in the manuscript to clarify this dis
 
 \Comment{Page 7, par 1 -- Could you give a simple example of ``Map data structure''.}
 
-\Response{We forgo the inclusion of a detailed example as we believe that the included description matches the level of detail of the paper. Detailed examples of maps can be found in the Tpetra documentation.
-Yet, we have made sure to complement the description of \texttt{Map} objects.}
+\Response{
+  We forgo the inclusion of a detailed example as we believe that the included description matches the level of detail of the paper. Detailed examples of maps can be found in the Tpetra documentation. Yet, we have made sure to complement the description of \texttt{Map} objects.
+}
+
+\todo{Do we have any schematic figure about a Map? Even though this would make the paper longer, I agree with the reviewer that this is a key concept. So if we have any figure, it may help the readers if we include it.}
 
 \Comment{Page 7, 1st bullet point -- Why associating BLAS-1 like kernels with TSQR?}
 
-\Response{The bullet describes the \texttt{Vector} and \texttt{MultiVector} classes provided by Tpetra. \texttt{MultiVectors} are used in Trilinos to hold tall-and-skinny dense matrices. This explains why TSQR is listed under this bullet.}
+\Response{
+  Thank you for this comment. The bullet describes the \texttt{Vector} and \texttt{MultiVector} classes provided by Tpetra. \texttt{MultiVectors} are used in Trilinos to hold tall-and-skinny dense matrices. This explains why TSQR is listed under this bullet.
+}
 
 \Comment{Page 7, 3rd bullet point -- ``Associated kernels...''. Can you be a bit more explicit in saying how kernels are associated with matrix storage format?}
 
-\Response{The listed kernels need to be aware of the specific data storage format as they directly access data buffers. We have made this explicit in the text.}
+\Response{
+  The listed kernels need to be aware of the specific data storage format as they directly access data buffers. We tried to clarify by making this explicit in the text.
+}
 
 \Comment{Page 7, subsec 2.5 -- ``.. the algorithms can be ... implementation such ..''. This whole sentence is unclear to me. When it talks about Krylov solver, is this a solver the Mat-Vec can be executed using kernels from another library? Is this the level of abstraction or something else?}
 
-\Response{Yes, this provides an abstract layer.}
+\Response{Yes, this provides an abstract layer. We have slightly reformulated these sentences to clarify this point:}
 
-\todo{Do we need to clarify this in the manuscript?}
+\Changes{%
+  The abstractions hide concrete linear algebra and solver implementations so that algorithm development is separated from the implementation of the underlying kernels, allowing the same code to be written once and reused across many application codes. For example, one could write a Krylov solver and, because the low-level kernels remain behind the abstraction layer, use it with multiple concrete linear algebra implementations such as Tpetra in Trilinos or the vector/matrix objects in PETSc~\cite{petsc-web-page}.
+}
 
 \Comment{Page 7, subsec 2.5, 1st bullet point -- ``... performance can be difficult.'' I find this paragraph and especially the sentence ending the words above confusing. What I understand is that Thyra and Tpetra have overlapping scopes. Tpetra targets distributed linear algebra but it looks it also provides methods like AXPY. What is then the distinction with Thyra?}
 
 \Response{Thyra provides abstract interfaces. Tpetra is one of the possible concrete implementations of these interfaces.}
 
-\todo{Should we mention Tpetra as a concorete implementation of this concept in the manuscript (similar to Stratimikos in the next bullet point)?}
+\todo{Should we mention Tpetra as a concorete implementation of this concept in the manuscript (similar to Stratimikos in the next bullet point)? \textbf{AH:} I agree with the reviewer that this sentence is not very clear. I thought about this, but I do not have a good concrete suggestion. Does one of you have a suggestion? I would suggest to slightly change this is in the paper.}
 
 \Comment{Page 8, line 1 -- ``factories''. No idea what it is intended with this term.}
 
 \Response{The following sentence describes what a factory is.}
+
+\todo{Perhaps, I missed this. But where is the term ``factory'' defined/explained?}
 
 \Comment{Page 8, par 1 -- ``... with the ANAs ... given in section 3.8'' Despite the text gives an example, I feel lost and find the example more confusing than illuminating.}
 
@@ -316,16 +320,24 @@ Yet, we have made sure to complement the description of \texttt{Map} objects.}
 
 \Changes{[...] The solver interfaces allow one to wrap any concrete linear solver or preconditioner for use with the ANAs. As a concrete instantiation of this concept, Trilinos implements the Stratimikos package that wraps all of the Trilinos preconditioners and linear solvers in Thyra abstractions. [...]}
 
+\todo{Why ``instantiation''?}
+
 \Comment{Page 8, subsec 2.6, par 3 -- ``Zoltan2 ... (via Kokkos)''. Another source of confusion. I understood that what is described here is Tpetra’s goal}
 
 \Response{The first and second paragraph of subsection 2.6 clearly describe the purpose of Zoltan2: partitioning, load balancing, and other combinatorial algorithms.
-While Tpetra offers distributed linear algebra, it does not compute the layout of the distribution itself.}
+While Tpetra offers distributed linear algebra, it does not compute the layout of the distribution itself. We slightly rephrased the sentence:}
+
+\Changes{%
+  Zoltan2 supports the use of both distributed-memory parallelism and on-node parallelism on CPUs and GPUs by building on Kokkos.
+}
 
 \noindent\textbf{Section 3}
 
 \Comment{Page 9, line 2 -- I am not familiar with the ``traits mechanism'' concept. I would encourage to be less terse.}
 
-\Response{We have slightly restructured the paragraph to better convey the fact that the following sentence gives examples of traits classes.}
+\Response{
+  Thank you for this comment. We have slightly restructured the paragraph to better convey the fact that the following sentence gives examples of traits classes.
+}
 
 \Comment{Page 9, par 1 -- ``... powerful solver managers..'' too abstract and not very operational description. I would suggest to clarify.}
 
@@ -333,11 +345,15 @@ While Tpetra offers distributed linear algebra, it does not compute the layout o
 
 \Comment{Page 9, par 2 -- ``Belos .... solve the right-hand side'' An example on how the manager works across solvers would be very helpful here.}
 
-\Response{It may have been unclear that a solver manager provides a strategy for a single iterative method, like CG, GMRES, etc.  That has been clarified.}
+\Response{
+  We recognized that it may have been unclear that a solver manager provides the strategy for a single iterative method, such as CG or GMRES, and have clarified the text.
+}
 
 \Comment{Page 10, line 1 -- ``H(curl) and H(div) discretizations ...'' this sentence may result cryptic for the person unfamiliar with the notation.}
 
-\Response{We have replaced H(curl) and H(div) discretizations with the types of physics that these discretizations are used for.}
+\Response{
+  For clarity within the context of this paper, we now refer to the types of physics associated with the H(curl) and H(div) discretizations instead of naming the function spaces directly.
+}
 
 \Comment{Page 10, subsec 3.3, par 1 -- ``wide range of challeging problems'' Like what? Perhaps the paragraph starting with ``FROSch has been applied...'' should be moved to an earlier position in the subsection.}
 
@@ -345,11 +361,12 @@ While Tpetra offers distributed linear algebra, it does not compute the layout o
 \begin{quote}
   Besides \emph{parallel scalability}, FROSch emphasizes \emph{applicability and robustness across a wide range of challenging problems} while supporting \emph{algebraic construction} of the preconditioners, that is, solely from the fully assembled system matrix.
 \end{quote}
-highlights several important properties of FROSch. In the next paragraph, we first focus on the algorithmic aspects that enable parallel scalability and algebraicity. The sentence in question, which has also been slightly reformulated, then begins the following paragraph and addresses the wide range of applicability. We find it natural to separate these two aspects into distinct paragraphs and hope the referee agrees with this structure.}
+  highlights several important properties of FROSch. In the next paragraph, we first focus on the algorithmic aspects that enable parallel scalability and algebraicity. The sentence in question, now slightly reformulated, opens the next paragraph and highlights the broad applicability. We find it natural to separate these two aspects into distinct paragraphs and hope the referee agrees with this structure. We hope that this clarifies.
+}
 
 \Comment{Page 10, subsec 3.3, last sentence -- ``..with performance gains... on GPU'' It would help to be more explicit here by at least mentioning the order of magnitude of the gains.}
 
-\Response{We have added the following statement to indicate best case performance gains from using GPUs:}
+\Response{Thank you. We have added the following statement to indicate best case performance gains from using GPUs:}
 
 \Changes{[...] speedups of up to $4.8\times$ are observed when comparing ILU solve times on CPU and GPU [...]}
 
@@ -361,7 +378,7 @@ highlights several important properties of FROSch. In the next paragraph, we fir
 
 \Comment{Page 12, subsec 3.5 -- The direct solvers described in this section seem to be application specific. Nothing wrong with it but it should be perhaps emphasized if they could be used with other problems.}
 
-\Response{We have rearranged the content of this section, such that we first describe Amesos2 with its solvers with general applicability and
+\Response{Thank you. We have rearranged the content of this section, such that we first describe Amesos2 with its solvers with general applicability and
 then detail more application-targeted solvers in ShyLU.
 We have added statements to make this distinction clear to the reader.  While the motivation for the development of solvers within ShyLU are
 application specific, they are reasonably general purpose. Basker, for example, could be used in the same context as KLU. It is a
@@ -370,15 +387,13 @@ the most efficient. Similarly, Tacho has been optimized for special class of pro
 
 \Comment{Page 12, subsec 3.5, par 2 -- I am not sure of the definition of BTF here. Is it really block triangular or should it be block tridiagonal? Please check. At the end of the paragraph the acronym KLU is undefined.}
 
-\Response{This is Block Triangular Form. KLU \cite{Davis2010a} also relies on BTF which was
-originally inspired Gilbert and Peierls algorithm (J. R. Gilbert and T. Peierls. Sparse partial pivoting in time proportional to arithmetic operations. SIAM
-Journal on Scientific and Statistical Computing, 9(5):862–874, 1988). The phrase ``KLU'' is rather a pun than an abbreviation. It
-comes from "Clark Kent" LU, as Gilbert Peierls algorithm is the LU algorithm that came before LU factorization became "Super"LU! We leave
-this explanation out of the paper.}
+\Response{
+  This is block triangular form (BTF). KLU~\cite{Davis2010a} also relies on BTF and was originally inspired by the Gilbert--Peierls algorithm (J.~R. Gilbert and T. Peierls, ``Sparse partial pivoting in time proportional to arithmetic operations,'' SIAM Journal on Scientific and Statistical Computing, 9(5):862--874, 1988). The phrase ``KLU'' is more of a pun than an abbreviation: it comes from "Clark Kent" LU, as the Gilbert--Peierls algorithm preceded the ``SuperLU'' factorization. We leave this explanation out of the paper.
+}
 
 \Comment{Page 12, subsec 3.5, par 3 -- ``In addition... FROSch).'' So both Taco and Basker are node-level solvers only? This was not clear. Perhaps it could be made more explicit.}
 
-\Response{Yes, Tacho and Basker are designed to be only node level solvers.}
+\Response{You are right, Tacho and Basker are designed to be only node level solvers. We have clarified this as follows:}
 
 \Changes{Basker~\cite{Basker2017} is a shared-memory sparse direct solver [...]}
 
@@ -386,13 +401,14 @@ this explanation out of the paper.}
 
 \Comment{Page 12, subsec 3.5, last par -- From this paragraph I evince that Amesos2 is only an interface not a solver package. Is this correct? Please clarify.}
 
-\Response{Amesos2 implements one direct solver, KLU2,  and provides interfaces to direct solvers in third-party libraries as well as in the
-Trilinos package ShyLU.
-We have clarified that in the description of the Amesos2 package.}
+\Response{Thank you for this comment. Amesos2 implements one direct solver, KLU2,  and provides interfaces to direct solvers in third-party libraries as well as in the
+Trilinos package ShyLU. We have clarified that in the description of the Amesos2 package.}
 
 \Comment{Page 12-13, subsec 3.6 -- The whole subsection is a bit unclear. I don’t have a clear idea of what Teko does. An example could perhaps clarify its scope.}
 
-\Response{We have added more context to further describe the purpose of the Teko package.}
+\Response{
+  We added context at the start of the section to better describe the purpose of the Teko package and hope this clarifies its scope for the reader.
+}
 
 \Comment{Page 13, subsec. 3.8 -- The description in this subsection sounds very nice indeed. I would very much like an example of the versatility of the interface. Also, why Anasazi is not included? Is the requirement of having a RHS such a constraint for the interface to exclude eigensolvers?}
 
@@ -401,6 +417,8 @@ allowing access to a wide variety of linear solvers and preconditioners in a uni
 While it is true that it could be extended to allow for eigenvalue problems \(Ax=\lambda x\),
 Anasazi is the only eigensolver package in Trilinos.
 On the other hand, Anasazi itself implements Thyra and Tpetra interfaces.}
+
+\todo{Could we incorporate this into the paper? Could we put a reference to Anasazi in that section?}
 
 \noindent\textbf{Section 4}
 
