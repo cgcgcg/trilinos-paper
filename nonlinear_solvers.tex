@@ -144,8 +144,8 @@ The implementation includes interfaces for forming the linear and/or nonlinear s
 The implementation has been used in~\cite{constantine2014efficient} to efficiently propagate uncertainty in multiphysics systems by reducing the full system with a nonlinear elimination method.
 
 The embedded ensemble propagation consists of propagating a subset of samples gathered into a so-called ensemble through the forward simulation at once.
-It builds on~\cite{pawlowski2012automating} for automating embedded analysis capabilities. Stokhos defines an ensemble type: a SIMD data type that is able to store
-the values of input, output, and state variables for every sample of an ensemble. This type can then be used within the Tpetra solver stack as \revised{an argument for its scalar type template parameter, allowing instantiation of Tpetra data structures on the ensemble type to propagate ensembles through supported linear solvers and preconditioners}.
+It builds on~\cite{pawlowski2012automating} for automating embedded analysis capabilities. Stokhos defines an ensemble type: a data type that is able to store
+the values of input, output, and state variables for every sample of an ensemble and can take advantage of SIMD (single instruction, multiple data) operations. This type can then be used within the Tpetra solver stack as \revised{an argument for its scalar type template parameter, allowing instantiation of Tpetra data structures on the ensemble type to propagate ensembles through supported linear solvers and preconditioners}.
 This approach \revised{results in reduced} computation time in four ways: the sample-independent data and computation can be reused for every sample of an ensemble, memory access patterns can be improved,
 operations on the ensemble type can be vectorized efficiently, and message passing costs can be reduced by sending fewer but larger messages.
 However, the approach requires solvers and BLAS functions to be aware of the extra dimension associated to the ensemble; for example, GMRES for ensemble types~\cite{liegeois2020gmres} needs to monitor
