@@ -102,7 +102,7 @@ or MueLu's fully coupled AMG hierarchies for multiphysics systems~\cite{Ohm2022a
 The assembly process relies on the Phalanx package for efficient assembly of the multiphysics systems.
 Panzer additionally can wrap the assembly in a \code{Thyra::ModelEvaluator}, providing direct interfaces to the linear and nonlinear analysis packages in Trilinos.
 
-Panzer can provide low level utilities for application codes to build on, or can be used as a high-level application framework. Important capabilities include the following:
+Panzer can provide utilities for application codes to build on, or can be used as a high-level application framework. Important capabilities include the following:
 \begin{itemize}
 \item \code{DOFManager}: Panzer provides a stand-alone DOF manager class in the dof-mgr subpackage. Given a list of DOFs and their corresponding basis and element blocks, the DOF manager can provide the mapping from DOFs on the mesh entities to the entries in linear algebra objects such as residual vectors and Jacobian matrices. The DOF manager can return the objects required to build distributed Tpetra
 %and Epetra
