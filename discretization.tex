@@ -105,14 +105,11 @@ Panzer additionally can wrap the assembly in a \code{Thyra::ModelEvaluator}, pro
 Panzer can provide utilities for application codes to build on, or can be used as a high-level application framework. Important capabilities include the following.
 \begin{itemize}
 \item \code{DOFManager}: Panzer provides a stand-alone DOF manager class in the dof-mgr subpackage. Given a list of DOFs and their corresponding basis and element blocks, the DOF manager can provide the mapping from DOFs on the mesh entities to the entries in linear algebra objects such as residual vectors and Jacobian matrices. The DOF manager can return the objects required to build distributed Tpetra
-%and Epetra
 maps and graphs for both uniquely owned global indices and ghosted indices used during assembly.
-%\todo{Remove ``Epetra''?}
 It provides the local indexing used during assembly as well. The DOF manager contains a mesh abstraction called a connection manager that provides information about mesh connectivity, global numbering of mesh topological entities, and element block groups. It is designed to support any underlying mesh database, allowing applications to use the DOF manager with any finite element application.
 \item \code{STK\_Interface}: Panzer contains a concrete implementation of the connection manager API for the STK mesh database package in Trilinos. The \code{STK\_Interface} object wraps an STK mesh database. It provides a simple interface for accessing global indices of the mesh and can be used to read/write associated solution data to the database. It additionally supports SEACAS for writing mesh data to disk. The \code{STK\_Interface} also includes support for periodic boundary conditions.  This capability can match topological entities on periodic parallel distributed faces. Once matched, the DOFs are unified to enforce periodicity for the DOF manager. This capability is in the adapters-stk subpackage.
 \item \emph{Linear Object Factory:} Panzer provides a linear object factory and linear object container designed to support parallel distributed assembly.
-%It supports both Epetra and Tpetra objects.
-The returned containers hold either the linear algebra objects for a uniquely owned DOF map used for solving the linear system or a ghosted version of the linear objects that can be used for assembly. The containers support export and import operations between the unique and ghosted containers. These are used to simplify the assembly process and abstract the underlying Tpetra linear algebra objects. %(i.e., Epetra or Tpetra).
+The returned containers hold either the linear algebra objects for a uniquely owned DOF map used for solving the linear system or a ghosted version of the linear objects that can be used for assembly. The containers support export and import operations between the unique and ghosted containers. These are used to simplify the assembly process and abstract the underlying Tpetra linear algebra objects.
 The linear object factory can also create DOF gather and scatter functors for the corresponding (and possibly blocked) matrices. The gather and scatter operations are specialized on the assembly types, including residuals, Jacobians, and tangents.
 Support for Hessians will be implemented as needed.
 The capability is found in the disc-fe subpackage.
@@ -136,4 +133,3 @@ This increased flexibility enables more advanced and unconventional remapping ap
 Compadre's stencil generation involves independent problems to be solved in parallel at the team level with loops over the thread and vector level within each problem. This hierarchical parallelism is achieved with performance portability by using the Kokkos programming model and leveraging the batched QR with pivoting algorithm implemented in Kokkos Kernels.
 
 Future plans include the implementation of other meshless methods like locally-supported radial basis functions.
-

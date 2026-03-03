@@ -1,16 +1,11 @@
 % !TEX root = main.tex
 
-% Core: Kokkos, Kokkos Kernels, Teuchos, Tpetra, Thyra (5)
-% Linear Solvers and Preconditioners: Belos, Ifpack2, FROSch, MueLu, ShyLu and Amesos2, Teko, Anasazi, Stratimikos (8)
-% Nonlinear Solvers and Analysis Tools: NOX & LOCA, ROL, Sacado, Stokhos, Piro (5)
-% Discretization Tools: Intrepid2, Phalanx, Tempus, Panzer, Comparde (5)
-% Framework: Build and Test Infrastructure, Documentation Infrastructure, PyTrilinos2 (3)
 
 \begin{tikzpicture}
 
-\definecolor{colTum}{rgb}{0.0,0.396,0.741} % TUM blue
-\definecolor{colUniBwOr}{rgb}{0.929,0.431,0.0} % Unibw Orange
-\definecolor{colUniBwGr}{RGB}{113,112,114} % Unibw Gray
+\definecolor{colTum}{rgb}{0.0,0.396,0.741}
+\definecolor{colUniBwOr}{rgb}{0.929,0.431,0.0}
+\definecolor{colUniBwGr}{RGB}{113,112,114}
 \definecolor{myDarkGreen}{rgb}{0,0.6,0}
 \definecolor{myPurple}{RGB}{125,0,255}
 \definecolor{myDarkRed}{RGB}{210,0,0}
@@ -36,7 +31,6 @@
 
 \begin{scope}[shift={(84:\rm-0.6)}]
 \begin{scope}[shift={(-0.5*\packagew,-2.5*\packageh)}]
-% Core: Kokkos, Kokkos Kernels, Teuchos, Tpetra, Thyra (5)
 \draw [fill=\colCore!20] (-\dist-\areah,-\dist) rectangle (\packagew+\dist, 6*\packageh+6*\dist);
 \node [rotate=90,align=center] at (-0.5*\dist-0.5*\areah,3*\dist+3*\packageh) {\textbf{Core}};
 \draw [fill=\colCore!40] (0,0) rectangle (\packagew, \packageh) node [pos=0.5] {Zoltan2};
@@ -50,7 +44,6 @@
 
 \begin{scope}[shift={(156:\rm+0.2)}]
 \begin{scope}[shift={(-0.5*\packagew,-2.5*\packageh)}]
-% Nonlinear Solvers and Analysis Tools: NOX & LOCA, ROL, Sacado, Stokhos, Piro (5)
 \draw [fill=\colNonlinear!20] (-\dist-\areah,-\dist) rectangle (\packagew+\dist, 5*\packageh+5*\dist);
 \node [rotate=90,align=center] at (-0.5*\dist-0.5*\areah,2*\dist+2.5*\packageh) {\textbf{Nonlinear Solvers}\\\textbf{and Analysis Tools}};
 \draw [fill=\colNonlinear!40] (0,0) rectangle (\packagew, \packageh) node [pos=0.5] {Piro};
@@ -63,7 +56,6 @@
 
 \begin{scope}[shift={(218:\rm+0.6)}]
 \begin{scope}[shift={(-0.5*\packagew,-2.5*\packageh)}]
-% Discretization Tools: Intrepid2, Phalanx, Tempus, Panzer, Comparde (5)
 \draw [fill=\colDisc!20] (-0.5*\dist-\dist-\areah,-\dist) rectangle (\packagew+\dist, 5*\packageh+5*\dist);
 \node [rotate=90] at (-0.5*\areah,2*\dist+2.5*\packageh) {\textbf{Discretization Tools}};
 \draw [fill=\colDisc!40,dashed] (0,0) rectangle (\packagew, \packageh) node [pos=0.5] {Compadre};
@@ -76,7 +68,6 @@
 
 \begin{scope}[shift={(0:\rm+0.5)}]
 \begin{scope}[shift={(-0.5*\packagew,-4*\packageh)}]
-% Linear Solvers and Preconditioners: Belos, Ifpack2, FROSch, MueLu, ShyLU and Amesos2, Teko, Anasazi, Stratimikos (8)
 \draw [fill=\colLinear!20] (-\dist-\areah,-\dist) rectangle (\packagew+\dist, 8*\packageh+8*\dist);
 \node [rotate=90] at (-0.5*\dist-0.5*\areah,3.5*\dist+4*\packageh) {\textbf{Linear Solvers and Preconditioners}};
 \draw [fill=\colLinear!40] (0,0) rectangle (\packagew, \packageh) node [pos=0.5] {Stratimikos};
@@ -92,7 +83,6 @@
 
 \begin{scope}[shift={(284:\rm+0.2)}]
 \begin{scope}[shift={(-0.5*\packagew,-1.5*\packageh)}]
-% Framework: Build and Test Infrastructure, Documentation Infrastructure, PyTrilinos2 (3)
 \draw [fill=\colFrame!20] (-\dist-\areah,-\dist) rectangle (\packagew+\dist, 3*\packageh+3*\dist);
 \node [rotate=90] at (-0.5*\dist-0.5*\areah,1*\dist+1.5*\packageh) {\textbf{Framework}};
 \draw [fill=\colFrame!40] (0,0) rectangle (\packagew, \packageh) node [pos=0.5] {PyTrilinos2};
