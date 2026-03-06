@@ -24,8 +24,7 @@ Given an interface to NOX that defines the nonlinear equations, users only need 
 LOCA provides several continuation methods, including pseudo-arclength continuation which allows tracking solution curves around turning points/folds.  Furthermore, LOCA has hooks to call the Anasazi eigensolver package to estimate leading eigenvalues of the linearization at each point along the continuation curve for linear stability analysis, including various spectral transformations highlighting eigenvalues in different regimes (e.g., largest magnitude, largest real).  Finally, LOCA implements equations augmenting the original nonlinear equations to locate and track bifurcation points where linear stability changes (e.g., turning point, pitchfork, and Hopf bifurcations) as a function of additional parameters. Examples of using LOCA for stability and bifurcation analysis include stability of a differentially heated cavity \cite{Salinger2002}, design of chemical vapor deposition reactors \cite{Pawlowski2001}, flow instabilities in counterflowing jets \cite{pawlowski_salinger_shadid_mountziaris_2006}, and ignition in laminar diffusion flames \cite{Shadid20061846}.
 
 \subsection{Numerical Optimization: ROL}
-Rapid Optimization Library (ROL) \cite{rol,ROL2022ICCOPT} is the
-Trilinos package for numerical optimization. ROL brings an extensive
+Rapid Optimization Library (ROL) \cite{rol,ROL2022ICCOPT} is a package for numerical optimization. ROL brings an extensive
 collection of state-of-the-art optimization algorithms to virtually
 any application.
 Its programming interface supports modern computational
@@ -116,6 +115,8 @@ local finite element layer of PDE-OPT (i.e., the evaluations of weak forms on
 a mesh element); PDE-OPT automates all remaining steps.
 \end{itemize}
 
+In 2025, the development of ROL has moved to its own GitHub repository\footnote{\url{https://github.com/sandialabs/rol}}.
+The ROL code is snapshotted into the Trilinos repository for convenience of Trilinos users.
 
 \subsection{Automatic Differentiation: Sacado} \label{sec:sacado}
 
