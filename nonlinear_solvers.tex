@@ -15,7 +15,7 @@ NOX provides linear algebra abstractions for applications to use custom implemen
 All algorithms are implemented under base-class abstractions for the solver, direction, and line search objects.
 Users can provide derived implementations for each of these base classes to insert new algorithms into the library.
 NOX provides various stopping criteria, including absolute, relative, and weighted root mean square norms, as well as stagnation and NaN detection.
-Applications can build custom stopping criteria within a tree-based logical structure and provide additional criteria through the StatusTest abstraction.
+Applications can build custom stopping criteria within a tree-based logical structure and provide additional criteria through the \code{StatusTest} abstraction.
 NOX also provides capabilities for continuation and stability analysis through the subpackage LOCA.
 
 LOCA (Library of Continuation Algorithms)~\cite{Salinger2005}
@@ -46,7 +46,7 @@ Similar to other Trilinos packages that implement abstract numerical
 algorithms, ROL's design is centered around an abstract linear algebra
 interface, through the \code{ROL::Vector} class, which enables the use of any
 ROL algorithm with any data type, such as the C++ \code{std::vector}, MPI-parallel
-data structures (e.g., Epetra, Tpetra, PETSc, HYPRE vectors), GPU-supporting data
+data structures (e.g., Tpetra, PETSc, HYPRE vectors), GPU-supporting data
 structures (e.g., Kokkos, ArrayFire \cite{Yalamanchili2015}), etc.
 In contrast to other vector implementations, ROL's abstract linear algebra
 interface also enables the definition of custom vector dot products with duality pairings,
